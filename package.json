@@ -1,0 +1,22 @@
+{
+  "name": "bamboo-web",
+  "version": "0.0.1",
+  "description": "Bamboo web frontend",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/inspire-0905/bamboo-web.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/inspire-0905/bamboo-web/issues"
+  },
+  "homepage": "https://github.com/inspire-0905/bamboo-web",
+  "devDependencies": {
+    "gulp": "^3.8.5"
+  }
+}
