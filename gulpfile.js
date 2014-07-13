@@ -8,7 +8,6 @@ var path = require('path'),
 
 var compile = function(file) {
     var compileFunc = function(file, method, outpath) {
-        console.log(file);
         gulp.src(file)
             .pipe(method().on('error', function(err) {
                 console.error(err.stack);
