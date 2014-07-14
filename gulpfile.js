@@ -42,7 +42,7 @@ gulp.task('connect', function() {
 });
 
 gulp.task('watch', function () {
-    gulp.watch(['./src/**/*.html', './src/**/*.coffee', './src/**/*.less'], function(data) {
+    gulp.watch(['src/**/*.html', 'src/**/*.coffee', 'src/**/*.less'], function(data) {
         console.info(data.type + ': ' + data.path);
         compile(data.path);
         gulp.src(data.path)

@@ -6,9 +6,28 @@
         <title>Bamboo-web</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/global.css">
         <link rel="stylesheet" href="css/index.css">
     </head>
     <body>
+        <article id="main">
+            <header id="header">
+                <div id="logo"></div>
+                <div id="form">
+                    <button id="submit"></button>
+                    <nav class="switch">
+                        <div id="register-btn">注册</div>
+                        <span class="split">/</span>
+                        <div id="login-btn">登录</div>
+                    </nav>
+                    <span class="split">/</span><input id="mail-input" placeholder="电子邮箱"></input>
+                    <span class="split">/</span><input id="pass-input" type="password" placeholder="登录密码"></input>
+                    
+                </div>
+            </header>
+            <div id="content"></div>
+            <footer id="footer"></footer>
+        </article>
         <script type="text/javascript" src="js/index.js"></script>
     </body>
 </html>
