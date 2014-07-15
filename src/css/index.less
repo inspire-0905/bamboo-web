@@ -1,12 +1,11 @@
 // login and register
 
 @mainWidth: 1040px;
-@mainHeight: 596px;
+@mainHeight: 558px;
 @placeholderColor: #d7d7d7;
 
 body {
-    // background-color: #fff;
-    background: url(http://assets.tangcha.tc/assets/v2/bg-bdebb57e845db654fb990b14a41635da.jpg);
+    background: url(../img/cover.jpg);
 }
 
 #main {
@@ -54,25 +53,13 @@ body {
         font-weight: bold;
     }
     input {
-        font-size: 12px;
+        font-size: 14px;
         padding: 2px 6px;
         border: 0;
         width: 125px;
         font-style: italic;
         margin-right: 5px;
         background-color: transparent;
-        // &::-webkit-input-placeholder {
-        //     color: @placeholderColor;
-        // }
-        // &:-moz-placeholder {
-        //     color: @placeholderColor;
-        // }
-        // &::-moz-placeholder {
-        //     color: @placeholderColor;
-        // }
-        // &:-ms-input-placeholder {
-        //     color: @placeholderColor;
-        // }
     }
     #submit {
         margin-left: 20px;
@@ -97,8 +84,40 @@ body {
 #content {
     width: 100%;
     height: 424px;
-    margin-top: 47px;
+    margin-top: 25px;
     background-color: #000;
     border-radius: 8px;
     background: url(../img/bg.jpg);
+}
+
+#cover {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    background: url(../img/cover.png);
+}
+
+#footer {
+    margin-top: 5px;
+    a {
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 12px;
+        color: #9c9c9c;
+        &:hover {
+            color: #b1b1b1;
+        }
+    }
+    .footer-left {
+        float: left;
+        a {
+            margin-right: 5px;
+        }
+    }
+    .footer-right {
+        float: right;
+        a {
+            margin-left: 5px;
+        }
+    }
 }
