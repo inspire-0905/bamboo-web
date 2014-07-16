@@ -51,3 +51,4 @@ gulp.task('watch', function () {
 });
 
 gulp.task('default', ['clean', 'compile', 'connect', 'watch']);
+gulp.task('release', ['clean', 'compile']);
