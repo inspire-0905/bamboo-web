@@ -9,7 +9,7 @@ Bamboo web frontend
     npm install
 ###### # run
     gulp
-    open http://localhost:8000/
+    # open http://localhost:8000/
 
-##### For release:
-    // updating...
+##### For deploy:
+    # git push will auto update
