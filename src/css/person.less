@@ -12,7 +12,6 @@
 
 #person-overlay {
     background-color: rgba(0,0,0,.6);
-    display: none;
     height: 100%;
     -moz-box-pack: center;
     -webkit-box-pack: center;
@@ -35,12 +34,43 @@
     display: -webkit-box;
     display: -webkit-flex;
     display: flex;
+    // display: none;
+}
+
+.input-wrap {
+	width: 440px;
+	padding: 4px;
+	border: 1px #ccc solid;
+	height: 22px;
+	input {
+		float: left;
+		width: 400px;
+		font-style: italic;
+		font-size: 12px;
+		border: 0;
+		margin-top: 2px;
+		margin-left: 3px;
+		color: #888;
+		// padding: 3px;
+	}
+	.confirm {
+		float: right;
+		margin-right: 5px;
+		font-weight: bold;
+		font-size: 12px;
+		margin-top: 3px;
+		cursor: pointer;
+		opacity: 0.8;
+		&:hover {
+			opacity: 1;
+		}
+	}
 }
 
 .person {
     // display: none;
     width: 562px;
-    height: 3000px;
+    // height: 765px;
     background-color: #fff;
     border-radius: 8px;
     position: relative;
@@ -78,6 +108,31 @@
                 margin-left: -4px;
             }
         }
+    }
+    .info {
+    	position: absolute;
+    	right: 12px;
+    	top: 203px;
+    	font-size: 12px;
+    	font-style: italic;
+    	float: right;
+    	text-align: right;
+    	line-height: 24px;
+    	color: #ff7800;
+    	.circle {
+    		float: left;
+    		margin-right: 8px;
+    	}
+    	.icon-btn {
+    		font-size: 16px;
+    		margin-left: 2px;
+    		color: #fff;
+    	}
+    	.count {
+    		margin-right: 5px;
+    		font-size: 16px;
+    		color: #fff;
+    	}
     }
     .header {
         width: 100%;
@@ -118,5 +173,52 @@
                 color: #eee;
             }
         }
+    }
+    .page-setting {
+    	color: #393939;
+    	padding: 35px;
+    	.setting-group {
+    		margin-bottom: 45px;
+	    	.head {
+	    		font-weight: bold;
+	    		padding-left: 15px;
+	    		border-left: 4px #282828 solid;
+	    		font-size: 16px;
+	    	}
+	    	.preface {
+	    		text-indent: 29px;
+	    	}
+	    	.content {
+	    		margin-top: 20px;
+	    		color: #5b5b5b;
+	    		font-size: 14px;
+		    	.social-list {
+		    		margin-bottom: 15px;
+		    		.douban {
+		    			font-weight: bold;
+		    		}
+		    		.split {
+		    			font-weight: bold;
+		    		}
+		    	}
+	    		.password {
+	    			.input-split {
+	    				float: left;
+	    				font-weight: bold;
+	    				margin-top: 2px;
+	    				margin-left: 5px;
+	    			}
+	    			input {
+	    				font-size: 12px;
+	    				margin-right: 5px;
+	    				width: 115px;
+	    				float: left;
+	    			}
+	    		}
+	    	}
+	    	.content-padding {
+	    		padding-left: 20px;
+	    	}
+    	}
     }
 }
