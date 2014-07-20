@@ -1,15 +1,10 @@
 // login and register
 
+@import "global";
+
 @mainWidth: 1040px;
 @mainHeight: 560px;
 @placeholderColor: #d7d7d7;
-
-.blur(@value) {
-    -webkit-filter: blur(@value);
-    -moz-filter: blur(@value);
-    -ms-filter: blur(@value);
-    filter: blur(@value);
-}
 
 body {
     background: url(../img/cover.jpg);
@@ -24,7 +19,7 @@ body {
     margin-left: -@mainWidth / 2;
     margin-top: -@mainHeight / 2;
     .blur(2px);
-    // display: none;
+    display: none;
 }
 
 #header {

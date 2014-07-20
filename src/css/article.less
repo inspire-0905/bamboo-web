@@ -1,0 +1,146 @@
+// article page
+
+@import "global";
+
+#article {
+	width: 664px;
+	margin: 0 auto;
+	padding-top: 80px;
+	padding-bottom: 250px;
+	.article-info {
+		width: 100%;
+		margin: 0 auto;
+		font-size: 18px;
+		margin-top: 50px;
+		margin-bottom: 50px;
+		text-align: center;
+		color: #bbbbbb;
+		font-style: italic;
+		.item {
+			margin-right: 2px;
+		}
+		.icon-book-open {
+			margin-right: 10px;
+			font-size: 26px;
+		}
+	}
+	.article-info.article-fin {
+		margin-top: 80px;
+		margin-bottom: 65px;
+		.icon-book-open {
+			font-size: 28px;
+			margin-right: 5px;
+		}
+		font-size: 26px;
+		font-style: normal;
+	}
+	.avatar {
+	    width: 67px;
+	    height: 67px;
+	    margin: 0 auto;
+	    // margin-top: 73px;
+	    border-radius: 67px;
+	    background: url(../img/avatar.png) no-repeat;
+	    float: left;
+	}
+	.article {
+		.image-info {
+			font-size: 14px;
+			position: absolute;
+			width: 110px;
+			margin-left: -145px;
+			margin-top: 2px;
+			text-align: right;
+			border-top: 2px #d3d3d3 solid;
+			padding-top: 5px;
+			color: #acacac;
+			padding-left: 15px;
+		}
+		.header {
+			height: 313px;
+			background: url(../img/thematic.jpg);
+			border-radius: 8px;
+			// margin-top: 80px;
+			.gradient {
+				.gradient(rgba(0,0,0,0.65));
+				// opacity: 0.3;
+				border-radius: 8px;
+				width: 100%;
+				height: 100%;
+			}
+			.head-wrap {
+				position: relative;
+				left: 50%;
+				float: left;
+				padding-bottom: 50px;
+			}
+			.head {
+				color: #fff;
+				margin: 0 auto;
+				overflow: hidden;
+				position: relative;
+				left: -50%;
+				align-items: flex-end;
+				margin-top: 215px;
+		        .info {
+		        	max-width: 500px;
+		        	margin-top: 7px;
+		        	margin-left: 15px;
+		        	float: left;
+			        .nick {
+			        	font-size: 16px;
+			        	color: #e2e2e2;
+			        	font-style: italic;
+			        }
+			        .title {
+			        	// font-weight: bold;
+			        	font-size: 28px;
+			        }
+		        }
+			}
+		}
+		.content {
+			p {
+				text-indent: 39px;
+				margin-bottom: 40px;
+				margin-top: 40px;
+				font-size: 19px;
+				letter-spacing: 1px;
+				line-height: 1.7;
+				color: #2f2f2f;
+			}
+			img {
+				width: 664px;
+				cursor: pointer;
+				&:hover {
+					.blur(5px);
+				}
+			}
+			.image {
+				border-radius: 6px;
+			}
+			.cover {
+				background-color: #000;
+			}
+		}
+	}
+
+	.article-meta {
+		.info {
+			margin-left: 20px;
+			margin-top: 14px;
+			float: left;
+			font-size: 18px;
+			.title {
+				margin-top: 4px;
+				color: #959595;
+				font-size: 14px;
+			}
+		}
+		.tool {
+			float: right;
+			font-size: 26px;
+			margin-top: 18px;
+		}
+	}
+}
