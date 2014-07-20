@@ -2,11 +2,19 @@
 
 @import "global";
 
+.blur-me {
+    -webkit-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -ms-filter: blur(2px);
+    filter: blur(2px);
+}
+
 #article {
 	width: 664px;
 	margin: 0 auto;
 	padding-top: 80px;
 	padding-bottom: 250px;
+	display: none;
 	.article-info {
 		width: 100%;
 		margin: 0 auto;
@@ -42,6 +50,7 @@
 	    border-radius: 67px;
 	    background: url(../img/avatar.png) no-repeat;
 	    float: left;
+	    cursor: pointer;
 	}
 	.article {
 		.image-info {
