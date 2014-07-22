@@ -10,6 +10,8 @@
         <link rel="stylesheet" href="css/index.css">
         <link rel="stylesheet" href="css/person.css">
         <link rel="stylesheet" href="css/article.css">
+        <link rel="stylesheet" href="vender/editor/pen.css">
+        <link rel="stylesheet" href="css/editor.css">
     </head>
     <body>
 
@@ -182,7 +184,13 @@
             </div>
         </div>
 
-        <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <div id="editor" data-toggle="pen">
+            <p>这是一篇中文示例文章，用于演示简时文书编辑器。</p>
+        </div>
+
+        <script type="text/javascript" src="vender/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="vender/editor/markdown.js"></script>
+        <script type="text/javascript" src="vender/editor/pen.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         
     </body>

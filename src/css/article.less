@@ -9,6 +9,31 @@
     filter: blur(2px);
 }
 
+#article .content, #editor {
+	p {
+		text-indent: 39px;
+		margin-bottom: 40px;
+		margin-top: 40px;
+		font-size: 19px;
+		letter-spacing: 1px;
+		line-height: 1.7;
+		color: #2f2f2f;
+	}
+	img {
+		width: 664px;
+		cursor: pointer;
+		&:hover {
+			.blur(5px);
+		}
+	}
+	.image {
+		border-radius: 6px;
+	}
+	.cover {
+		background-color: #000;
+	}
+}
+
 #article {
 	width: 664px;
 	margin: 0 auto;
@@ -106,30 +131,6 @@
 			        	font-size: 28px;
 			        }
 		        }
-			}
-		}
-		.content {
-			p {
-				text-indent: 39px;
-				margin-bottom: 40px;
-				margin-top: 40px;
-				font-size: 19px;
-				letter-spacing: 1px;
-				line-height: 1.7;
-				color: #2f2f2f;
-			}
-			img {
-				width: 664px;
-				cursor: pointer;
-				&:hover {
-					.blur(5px);
-				}
-			}
-			.image {
-				border-radius: 6px;
-			}
-			.cover {
-				background-color: #000;
 			}
 		}
 	}

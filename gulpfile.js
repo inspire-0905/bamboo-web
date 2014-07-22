@@ -19,12 +19,14 @@ var compile = function(file) {
         compileFunc('src/**/*.less', less);
     } else {
         var extName = path.extname(file);
-        compileFunc(file, (extName === '.coffee' ? coffee : less), path.dirname(file));
+        if (extName === '.coffee' || extName === '.less') {
+            compileFunc(file, (extName === '.coffee' ? coffee : less), path.dirname(file));
+        }
     }
 };
 
 gulp.task('clean', function () {
-    gulp.src(['src/**/*.js', 'src/**/*.css'], {
+    gulp.src(['src/**/*.js', '!src/vender/**/*.js', 'src/**/*.css', '!src/vender/**/*.css'], {
         read: false
     }).pipe(clean());
 });
@@ -42,7 +44,7 @@ gulp.task('connect', function() {
 });
 
 gulp.task('watch', function () {
-    gulp.watch(['src/**/*.html', 'src/**/*.coffee', 'src/**/*.less'], function(data) {
+    gulp.watch(['src/**/*.html', 'src/**/*.coffee', 'src/**/*.less', 'src/**/*.js', 'src/**/*.css'], function(data) {
         console.info(data.type + ': ' + data.path);
         compile(data.path);
         gulp.src(data.path)
