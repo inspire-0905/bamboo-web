@@ -1,8 +1,59 @@
 // editor
 
-#editor {
-	width: 664px;
-	margin: 0 auto;
-	padding-top: 80px;
-	padding-bottom: 250px;
+#article-editor {
+	padding-top: 0;
+	.article {
+		.header {
+			background: none;
+			.gradient {
+				background: none;
+				.thematic-upload {
+					position: absolute;
+					font-size: 60px;
+					width: 60px;
+					height: 60px;
+					margin-left: -30px;
+					margin-top: 100px;
+					color: #ccc;
+					text-align: center;
+					cursor: pointer;
+					opacity: 0.8;
+					&:hover {
+						opacity: 1;
+					}
+				}
+				.info {
+					.nick {
+						color: #666;
+					}
+					.title {
+						color: #bbb;
+						font-style: italic;
+					}
+				}
+			}
+		}
+	}
+	#editor {
+		color: #aaa;
+		font-style: italic;
+	}
+	.editor-btn {
+		font-size: 19px;
+		opacity: 0.7;
+		cursor: pointer;
+		&:hover {
+			opacity: 1;
+		}
+	}
+	.publish {
+		position: absolute;
+		right: 60px;
+		top: 40px;
+	}
+	.light {
+		position: absolute;
+		left: 60px;
+		top: 40px;
+	}
 }

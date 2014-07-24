@@ -9,15 +9,15 @@
     filter: blur(2px);
 }
 
-#article .content, #editor {
+#article .content, #article-editor {
+	font-size: 19px;
+	letter-spacing: 1px;
+	line-height: 1.7;
+	color: #2f2f2f;
 	p {
 		text-indent: 39px;
 		margin-bottom: 40px;
 		margin-top: 40px;
-		font-size: 19px;
-		letter-spacing: 1px;
-		line-height: 1.7;
-		color: #2f2f2f;
 	}
 	img {
 		width: 664px;
@@ -35,11 +35,14 @@
 }
 
 #article {
+	display: none;
+}
+
+#article, #article-editor {
 	width: 664px;
 	margin: 0 auto;
 	padding-top: 80px;
 	padding-bottom: 250px;
-	display: none;
 	.article-info {
 		width: 100%;
 		margin: 0 auto;
@@ -118,16 +121,17 @@
 				margin-top: 215px;
 		        .info {
 		        	max-width: 500px;
-		        	margin-top: 7px;
+		        	margin-top: 10px;
 		        	margin-left: 15px;
 		        	float: left;
 			        .nick {
+			        	// margin-top: 5px;
+			        	line-height: 16px;
 			        	font-size: 16px;
 			        	color: #e2e2e2;
 			        	font-style: italic;
 			        }
 			        .title {
-			        	// font-weight: bold;
 			        	font-size: 28px;
 			        }
 		        }
