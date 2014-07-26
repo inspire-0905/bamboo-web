@@ -1,14 +1,5 @@
 // article page
 
-@import "global";
-
-.blur-me {
-    -webkit-filter: blur(2px);
-    -moz-filter: blur(2px);
-    -ms-filter: blur(2px);
-    filter: blur(2px);
-}
-
 #article .content, #article-editor {
 	font-size: 19px;
 	letter-spacing: 1px;
@@ -22,9 +13,6 @@
 	img {
 		width: 664px;
 		cursor: pointer;
-		&:hover {
-			.blur(5px);
-		}
 	}
 	.image {
 		border-radius: 6px;
@@ -34,7 +22,7 @@
 	}
 }
 
-#article {
+#article, #article-editor {
 	display: none;
 }
 
@@ -99,7 +87,6 @@
 			border-radius: 8px;
 			// margin-top: 80px;
 			.gradient {
-				.gradient(rgba(0,0,0,0.65));
 				// opacity: 0.3;
 				border-radius: 8px;
 				width: 100%;

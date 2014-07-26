@@ -1,14 +1,8 @@
 // login and register
 
-@import "global";
-
 @mainWidth: 1040px;
 @mainHeight: 560px;
 @placeholderColor: #d7d7d7;
-
-body {
-    background: url(../img/cover.jpg);
-}
 
 #main {
     width: @mainWidth;
@@ -18,145 +12,143 @@ body {
     top: 50%;
     margin-left: -@mainWidth / 2;
     margin-top: -@mainHeight / 2;
-    // .blur(2px);
-    display: none;
-}
+    // display: none;
+    .header {
+        height: 80px;
+    }
 
-#header {
-    height: 80px;
-}
-
-#logo {
-    width: 225px;
-    height: 80px;
-    float: left;
-    background: url(../img/logo.png);
-}
-
-#form {
-    float: right;
-    margin-top: 35px;
-    .switch {
+    .logo {
+        width: 225px;
+        height: 80px;
         float: left;
-        margin-right: 40px;
-        margin-top: 3px;
-        div, span {
+        background: url(../img/logo.png);
+    }
+
+    .form {
+        float: right;
+        margin-top: 35px;
+        .switch {
             float: left;
+            margin-right: 40px;
+            margin-top: 3px;
+            div, span {
+                float: left;
+                font-weight: bold;
+            }
+            .icon-github-circled {
+                float: left;
+                font-size: 30px;
+                margin-right: 10px;
+                margin-top: -11px;
+                cursor: pointer;
+                &:hover {
+                    color: #333;
+                }
+            }
+            .register-btn {
+                margin-right: 10px;
+            }
+            .login-btn {
+                margin-left: 10px;
+                color: #c4c3c3;
+            }
+        }
+        span {
+            font-size: 15px;
             font-weight: bold;
         }
-        .icon-github-circled {
-            float: left;
-            font-size: 30px;
-            margin-right: 10px;
-            margin-top: -11px;
-            cursor: pointer;
-            &:hover {
-                color: #333;
-            }
-        }
-        #register-btn {
-            margin-right: 10px;
-        }
-        #login-btn {
-            margin-left: 10px;
-            color: #c4c3c3;
-        }
-    }
-    span {
-        font-size: 15px;
-        font-weight: bold;
-    }
-    input {
-        font-size: 14px;
-        padding: 2px 6px;
-        border: 0;
-        width: 125px;
-        font-style: italic;
-        margin-right: 5px;
-        background-color: transparent;
-    }
-    #submit {
-        margin-left: 20px;
-        padding: 10px 15px;
-        background-color: transparent;
-        border: 2px #000 solid;
-        border-radius: 3px;
-        float: right;
-        margin-top: -12px;
-        width: 137px;
-        height: 45px;
-        background-image: url(../img/submit.png);
-        background-repeat: no-repeat;
-        background-position: center;
-        cursor: pointer;
-        &:hover {
-            background-color: #f4f4f4;
-        }
-    }
-}
-
-#content {
-    width: 100%;
-    height: 424px;
-    margin-top: 25px;
-    background-color: #000;
-    border-radius: 8px;
-    background: url(../img/bg.jpg);
-}
-
-#cover {
-    width: 100%;
-    height: 100%;
-    border-radius: 8px;
-    color: #fff;
-    background: url(../img/cover.png);
-    .bg-nav {
-        font-size: 24px;
-        position: absolute;
-        right: 0px;
-        bottom: 0px;
-        margin-right: 15px;
-        margin-bottom: 48px;
-        .icon-btn {
-            cursor: pointer;
-            opacity: 0.6;
-            &:hover {
-                opacity: 0.8;
-            }
-        }
-    }
-    .bg-info {
-        font-size: 14px;
-        position: absolute;
-        left: 0px;
-        bottom: 0px;
-        margin-left: 20px;
-        margin-bottom: 48px;
-        opacity: 0.6;
-    }
-}
-
-#footer {
-    margin-top: 10px;
-    a {
-        font-weight: bold;
-        text-decoration: none;
-        font-size: 14px;
-        color: #9c9c9c;
-        &:hover {
-            color: #b1b1b1;
-        }
-    }
-    .footer-left {
-        float: left;
-        a {
+        input {
+            font-size: 14px;
+            padding: 2px 6px;
+            border: 0;
+            width: 125px;
+            font-style: italic;
             margin-right: 5px;
+            background-color: transparent;
+        }
+        .submit {
+            margin-left: 20px;
+            padding: 10px 15px;
+            background-color: transparent;
+            border: 2px #000 solid;
+            border-radius: 3px;
+            float: right;
+            margin-top: -12px;
+            width: 137px;
+            height: 45px;
+            background-image: url(../img/submit.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            cursor: pointer;
+            &:hover {
+                background-color: #f4f4f4;
+            }
         }
     }
-    .footer-right {
-        float: right;
+
+    .content {
+        width: 100%;
+        height: 424px;
+        margin-top: 25px;
+        background-color: #000;
+        border-radius: 8px;
+        background: url(../img/bg.jpg);
+    }
+
+    .cover {
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+        color: #fff;
+        background: url(../img/cover.png);
+        .bg-nav {
+            font-size: 24px;
+            position: absolute;
+            right: 0px;
+            bottom: 0px;
+            margin-right: 15px;
+            margin-bottom: 48px;
+            .icon-btn {
+                cursor: pointer;
+                opacity: 0.6;
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+        }
+        .bg-info {
+            font-size: 14px;
+            position: absolute;
+            left: 0px;
+            bottom: 0px;
+            margin-left: 20px;
+            margin-bottom: 48px;
+            opacity: 0.6;
+        }
+    }
+
+    .footer {
+        margin-top: 10px;
         a {
-            margin-left: 5px;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 14px;
+            color: #9c9c9c;
+            &:hover {
+                color: #b1b1b1;
+            }
+        }
+        .footer-left {
+            float: left;
+            a {
+                margin-right: 5px;
+            }
+        }
+        .footer-right {
+            float: right;
+            a {
+                margin-left: 5px;
+            }
         }
     }
 }

@@ -1,21 +1,21 @@
 $ () ->
 
-    $('#submit').on 'click', () ->
+    $('#main .submit').on 'click', () ->
 
     	$('#main').hide()
     	$('#article').show()
     	$('#person-overlay').css('display', 'flex')
-    	$('#article').addClass('blur-me')
+    	$('#article').addClass('blur')
 
     $('.avatar').on 'click', () ->
 
     	$('#person-overlay').css('display', 'flex')
-    	$('#article').addClass('blur-me')
+    	$('#article').addClass('blur')
 
     $('.close').on 'click', () ->
 
     	$('#person-overlay').hide()
-    	$('#article').removeClass('blur-me')
+    	$('#article').removeClass('blur')
 
     # create editor
 
