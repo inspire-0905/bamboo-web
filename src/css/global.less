@@ -45,3 +45,22 @@ ul {
 .clear {
     clear: both;
 }
+
+input {
+    &::-webkit-input-placeholder {
+        color: #ccc;
+        font-style: italic;
+    }
+    &:-moz-placeholder {
+        color: #ccc;
+        font-style: italic;
+    }
+    &::-moz-placeholder {
+        color: #ccc;
+        font-style: italic;
+    }
+    &:-ms-input-placeholder {
+        color: #ccc;
+        font-style: italic;
+    }
+}
