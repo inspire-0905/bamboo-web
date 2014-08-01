@@ -6,17 +6,18 @@
         <title>Bamboo-web</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="vender/editor/pen.css">
         <link rel="stylesheet" href="css/global.css">
         <link rel="stylesheet" href="css/icon.css">
         <link rel="stylesheet" href="css/index.css">
         <link rel="stylesheet" href="css/person.css">
         <link rel="stylesheet" href="css/article.css">
-        <link rel="stylesheet" href="vender/editor/pen.css">
         <link rel="stylesheet" href="css/editor.css">
+        <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
 
-        <article id="main">
+        <article id="index">
             <header class="header">
                 <div class="logo"></div>
                 <div class="form">
@@ -52,8 +53,8 @@
             </footer>
         </article>
 
-        <div id="person-overlay">
-            <div class="person">
+        <div id="person">
+            <div class="person-inner">
                 <header class="header">
                     <div class="cover">
                         <div class="gradient">
@@ -216,7 +217,16 @@
                 </div>
                 <div id="editor" data-toggle="pen"></div>
             </article>
+        </div>
 
+        <div id="main">
+            <div class="left">
+                <div class="container">
+                    <div class="logo"></div>
+                    <div class="avatar"></div>
+                    <div class="nick">简时文书</div>
+                </div>
+            </div>
         </div>
 
         <script type="text/javascript" src="vender/jquery-2.1.1.min.js"></script>
