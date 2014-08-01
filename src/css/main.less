@@ -1,5 +1,7 @@
 #main {
+	color: #fff;
 	.left {
+		height: 200px;
 		width: 225px;
 		background-color: #202020;
 		height: 100%;
@@ -7,10 +9,16 @@
 		bottom: 0;
 		left: 0;
 		position: absolute;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		.container {
 			// position: absolute;
-			div {
+			
+
+			div, ul {
 				margin: 0 auto;
+				text-align: center;
 			}
 			top: 50%;
 			.logo {
@@ -32,6 +40,54 @@
                 font-size: 16px;
                 width: 180px;
                 text-align: center;
+            }
+            .info-list {
+            	text-align: right;
+            	margin-top: 60px;
+            	margin-right: 47px;
+            	.info-item {
+            		margin-top: 5px;
+            	}
+            	.count {
+            		font-size: 18px;
+            		font-style: italic;
+            	}
+            	.name {
+            		font-size: 14px;
+            		margin-left: 5px;
+            		font-style: italic;
+            		color: #ff7800;
+            	}
+            	.icon {
+            		margin-left: 15px;
+            		font-size: 14px;
+            		color: #aaa;
+            	}
+            }
+            .write {
+            	margin-top: 50px;
+            	width: 100%;
+            	font-size: 18px;
+            	cursor: pointer;
+            	color: #aaa;
+            	&:hover {
+            		color: #fff;
+            	}
+            	.icon {
+            		margin-right: 10px;
+            	}
+            }
+            .menu {
+            	margin-top: 50px;
+            	.menu-item {
+            		width: 100%;
+            		// border-left: #00f 4px solid;
+            		margin-bottom: 20px;
+            		.icon {
+            			margin-right: 10px;
+            			font-size: 18px;
+            		}
+            	}
             }
 		}
 	}
