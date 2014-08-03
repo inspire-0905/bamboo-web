@@ -9,14 +9,14 @@
     // width: 1280px;
     // width: 100%;
     margin: 0 auto;
-    max-width: 974px;
+    max-width: 900px;
     // position: relative;
     // left: 50%;
     // margin-left: -500px;
 	.left {
         // color: #fff;
 		height: 200px;
-		// width: 200px;
+		width: 150px;
         // float: left;
         // margin-right: 50px;
 		// background-color: #202020;
@@ -26,25 +26,33 @@
 		// left: 0;
 		position: fixed;
 		display: flex;
-		justify-content: center;
+		// justify-content: center;
 		align-items: center;
 		.container {
 			// position: absolute;
+            border-right: 1px dashed #ccc;
+            padding: 20px 20px 20px 0;
 			div, ul {
-				margin: 0 auto;
-				text-align: center;
+				// margin: 0 auto;
+				text-align: right;
 			}
 			top: 50%;
 			.logo {
 				background: url(../img/logo_small.png);
 				width: 38px;
 				height: 38px;
+                float: right;
+                clear: both;
+                // margin-bottom: 20px;
 			}
             .avatar {
                 width: 67px;
                 height: 67px;
                 margin-top: 30px;
                 border-radius: 67px;
+                float: right;
+                clear: both;
+                margin-bottom: 20px;
                 background: url(../img/avatar.png) no-repeat;
             }
             .nick {
@@ -52,14 +60,15 @@
                 // font-weight: bold;
                 margin-top: 18px;
                 font-size: 16px;
-                width: 180px;
-                text-align: center;
+                clear: both;
+                // width: 180px;
+                text-align: right;
             }
             .info-list {
             	text-align: right;
                 // margin: 0 auto;
             	margin-top: 40px;
-            	margin-right: 47px;
+            	// margin-right: 47px;
             	.info-item {
             		margin-top: 5px;
             	}
@@ -112,7 +121,7 @@
     .right {
         // margin: 0 auto;
         // float: left;
-        margin-left: 260px;
+        margin-left: 230px;
         color: #444;
         width: 664px;
         .title {
@@ -130,6 +139,9 @@
                 margin-top: 40px;
                 margin-bottom: 40px;
                 border-bottom: 1px dashed #bbb;
+                &:last-child {
+                    border-bottom: 0;
+                }
                 .card {
                     width: 100%;
                     // height: 460px;
