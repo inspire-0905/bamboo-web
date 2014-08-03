@@ -1,21 +1,19 @@
 #main {
-	color: #fff;
 	.left {
+        color: #fff;
 		height: 200px;
-		width: 225px;
+		width: 250px;
 		background-color: #202020;
 		height: 100%;
 		top: 0;
 		bottom: 0;
 		left: 0;
-		position: absolute;
+		position: fixed;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		.container {
 			// position: absolute;
-			
-
 			div, ul {
 				margin: 0 auto;
 				text-align: center;
@@ -94,4 +92,72 @@
             }
 		}
 	}
+    .right {
+        color: #444;
+        padding: 50px 370px 50px 370px;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        position: fixed;
+        overflow: auto;
+        .title {
+            font-size: 20px;
+            .icon {
+                margin-right: 10px;
+            }
+        }
+        .article-list {
+            display: none;
+            margin-top: 50px;
+            .article-item {
+                .card {
+                    width: 440px;
+                    height: 330px;
+                    background-color: #ddd;
+                    border: 1px #ccc solid;
+                }
+                .thematic {
+                    color: #fff;
+                    width: 100%;
+                    height: 180px;
+                    background-image: url(../img/thematic.jpg);
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    .gradient {
+                        width: 100%;
+                        height: 100%;
+                        .head {
+                            margin-left: 12px;
+                            margin-top: 132px;
+                            position: absolute;
+                            .avatar {
+                                width: 40px;
+                                height: 40px;
+                                // margin-top: 36px;
+                                border-radius: 40px;
+                                background-size: cover;
+                                background-image: url(../img/avatar.png);
+                                background-repeat: no-repeat;
+                                float: left;
+                            }
+                            .info {
+                                margin-left: 10px;
+                                float: left;
+                                .nick {
+                                    font-size: 12px;
+                                }
+                            }
+                        }
+                    }
+                }
+                .preview {
+                    height: 105px;
+                    width: 100%;
+                    background-color: #fff;
+                    border-bottom: 1px #ccc solid;
+                }
+            }
+        }
+    }
 }
