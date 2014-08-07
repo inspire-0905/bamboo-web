@@ -40,8 +40,8 @@
                 font-size: 16px;
                 clear: both;
                 text-align: right;
-                color: #fff;
-                background-color: #000;
+                // color: #fff;
+                // background-color: #000;
                 width: auto;
             }
             .info-list {
@@ -106,11 +106,12 @@
             }
         }
         .article-list {
-            display: none;
-            margin-top: 40px;
+            // display: none;
+            margin-top: 30px;
+            overflow: auto;
             .article-item {
                 margin-top: 40px;
-                margin-bottom: 40px;
+                // margin-bottom: 40px;
                 border-bottom: 1px dashed #bbb;
                 &:last-child {
                     border-bottom: 0;
@@ -133,63 +134,60 @@
                         height: 100%;
                     }
                 }
-                .head {
-                    padding: 23px 0 23px 0;
-                    float: left;
-                    display: inline-block;
-                    .info {
-                        float: left;
-                        .detail {
-                            font-size: 16px;
-                            margin-top: 14px;
-                            color: #aaa;
-                            line-height: 24px;
-                            .avatar {
-                                width: 20px;
-                                height: 20px;
-                                margin-right: 10px;
-                                border-radius: 20px;
-                                background-size: cover;
-                                background-image: url(../img/avatar.png);
-                                background-repeat: no-repeat;
-                                float: left;
-                            }
-                        }
-                        .title {
-                            font-weight: bold;
-                            font-size: 24px;
-                        }
-                    }
+                .title {
+                    font-weight: bold;
+                    font-size: 24px;
+                    margin-bottom: 10px;
+                    margin-top: 20px;
                 }
                 .preview {
                     display: inline-block;
                     letter-spacing: 0.5px;
                     line-height: 26px;
-                    font-size: 16px;
-                    padding: 23px 0 23px 0;
+                    font-size: 14px;
+                    padding: 15px 0 10px 0;
                     padding-top: 0;
-                    color: #555;
-                    text-indent: 38px;
+                    color: #777;
+                    // text-indent: 30px;
                 }
                 .footer {
+                    clear: both;
                     height: 40px;
                     width: 100%;
                     display: inline-block;
                     margin: 0;
                     margin-bottom: 20px;
                     color: #333;
-                    .info {
-                        font-size: 14px;
+                    font-size: 14px;
+                    // float: left;
+                    .item {
+                        margin-right: 15px;
                         float: left;
-                        .item {
-                            margin-right: 15px;
+                    }
+                    .icon {
+                        margin-right: 6px;
+                        // margin-top: 1px;
+                        float: left;
+                    }
+                    .author {
+                        float: left;
+                        font-size: 14px;
+                        // margin-top: 10px;
+                        // color: #888;
+                        line-height: 24px;
+                        .avatar {
+                            width: 20px;
+                            height: 20px;
+                            margin-right: 10px;
+                            border-radius: 20px;
+                            background-size: cover;
+                            background-image: url(../img/avatar.png);
+                            background-repeat: no-repeat;
                             float: left;
                         }
-                        .icon {
-                            margin-right: 6px;
-                            margin-top: 1px;
-                            float: left;
-                        }
+                    }
+                    .detail {
+                        float: right;
                     }
                     .read {
                         float: right;
@@ -204,6 +202,7 @@
         }
         .circle-list {
             margin-top: 60px;
+            display: none;
             // color: #333;
             .circle-item {
                 // width: 256px;
