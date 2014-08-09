@@ -1,5 +1,6 @@
 node_modules
 src/**/*.js
-!src/vender/**/*.js
+!src/js/vender/**/*.js
 src/**/*.css
-!src/vender/**/*.css
+!src/js/vender/**/*.css
+!src/js/module/**/template.js

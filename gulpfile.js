@@ -4,7 +4,9 @@ var path = require('path'),
     connect = require('gulp-connect'),
     clean = require('gulp-clean'),
     coffee = require('gulp-coffee'),
-    less = require('gulp-less');
+    less = require('gulp-less'),
+    defineModule = require('gulp-define-module'),
+    handlebars = require('gulp-handlebars');
 
 var compile = function(file) {
     var compileFunc = function(file, method, outpath) {
@@ -25,13 +27,13 @@ var compile = function(file) {
     }
 };
 
-gulp.task('clean', function () {
-    gulp.src(['src/**/*.js', '!src/vender/**/*.js', 'src/**/*.css', '!src/vender/**/*.css'], {
+gulp.task('clean', function() {
+    gulp.src(['src/**/*.js', '!src/js/vender/**/*.js', 'src/**/*.css', '!src/js/vender/**/*.css'], {
         read: false
     }).pipe(clean());
 });
 
-gulp.task('compile', function () {
+gulp.task('compile', function() {
     compile();
 });
 
@@ -43,7 +45,7 @@ gulp.task('connect', function() {
     });
 });
 
-gulp.task('watch', function () {
+gulp.task('watch', function() {
     gulp.watch(['src/**/*.html', 'src/**/*.coffee', 'src/**/*.less', 'src/**/*.js', 'src/**/*.css'], function(data) {
         console.info(data.type + ': ' + data.path);
         compile(data.path);
@@ -52,5 +54,14 @@ gulp.task('watch', function () {
     });
 });
 
-gulp.task('default', ['clean', 'compile', 'connect', 'watch']);
-gulp.task('release', ['clean', 'compile']);
+gulp.task('template', function() {
+    gulp.src(['src/js/module/**/template.html'])
+        .pipe(handlebars())
+        .pipe(defineModule('plain', {
+            wrapper: 'define([], function() {return <%= handlebars %>});'
+        }))
+        .pipe(gulp.dest('src/js/module'));
+});
+
+gulp.task('default', ['clean', 'compile', 'template', 'connect', 'watch']);
+gulp.task('release', ['clean', 'compile', 'template']);
