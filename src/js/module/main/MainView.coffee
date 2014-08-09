@@ -2,12 +2,10 @@ define ['backbone', 'module/index/template'], (Backbone, template) ->
 
     MainView = Backbone.View.extend
 
-        events:
-            'click .submit': 'submit'
+        el: '#main'
+        events: {}
         initialize: () ->
         render: () ->
-            return template()
-        submit: () ->
-            # alert('test')
+            @$el.html template()
 
     return MainView

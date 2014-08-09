@@ -10,19 +10,32 @@ var path = require('path'),
 
 var compile = function(file) {
     var compileFunc = function(file, method, outpath) {
-        gulp.src(file)
-            .pipe(method().on('error', function(err) {
-                console.error(err.stack);
-            }))
-            .pipe(gulp.dest(outpath || 'src'));
+        if (method === 'template') {
+            gulp.src(file)
+                .pipe(handlebars())
+                .pipe(defineModule('plain', {
+                    wrapper: 'define([], function() {return <%= handlebars %>});'
+                }))
+                .pipe(gulp.dest(outpath));
+        } else {
+            gulp.src(file)
+                .pipe(method().on('error', function(err) {
+                    console.error(err.stack);
+                }))
+                .pipe(gulp.dest(outpath || 'src'));
+        }
     };
     if (!file) {
         compileFunc('src/**/*.coffee', coffee);
         compileFunc('src/**/*.less', less);
+        compileFunc('src/js/module/**/template.html', 'template', 'src/js/module');
     } else {
         var extName = path.extname(file);
+        var baseName = path.basename(file);
         if (extName === '.coffee' || extName === '.less') {
             compileFunc(file, (extName === '.coffee' ? coffee : less), path.dirname(file));
+        } else if (baseName === 'template.html') {
+            compileFunc(file, 'template', path.dirname(file));
         }
     }
 };
@@ -54,14 +67,5 @@ gulp.task('watch', function() {
     });
 });
 
-gulp.task('template', function() {
-    gulp.src(['src/js/module/**/template.html'])
-        .pipe(handlebars())
-        .pipe(defineModule('plain', {
-            wrapper: 'define([], function() {return <%= handlebars %>});'
-        }))
-        .pipe(gulp.dest('src/js/module'));
-});
-
-gulp.task('default', ['clean', 'compile', 'template', 'connect', 'watch']);
-gulp.task('release', ['clean', 'compile', 'template']);
+gulp.task('default', ['clean', 'compile', 'connect', 'watch']);
+gulp.task('release', ['clean', 'compile']);

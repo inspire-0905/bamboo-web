@@ -9,7 +9,6 @@ define ['backbone', 'module/index/template'], (Backbone, template) ->
         render: () ->
             @$el.html template()
         submit: () ->
-            alert(1)
             NProgress.start()
 
     return IndexView
