@@ -3,4 +3,3 @@ src/**/*.js
 !src/js/vender/**/*.js
 src/**/*.css
 !src/js/vender/**/*.css
-!src/js/module/**/template.js

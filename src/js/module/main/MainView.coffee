@@ -1,4 +1,4 @@
-define ['backbone', 'module/index/template'], (Backbone, template) ->
+define ['backbone', 'module/main/template'], (Backbone, template) ->
 
     MainView = Backbone.View.extend
 

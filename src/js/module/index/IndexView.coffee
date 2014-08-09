@@ -9,6 +9,6 @@ define ['backbone', 'module/index/template'], (Backbone, template) ->
         render: () ->
             @$el.html template()
         submit: () ->
-            NProgress.start()
+            workspace.navigate('main', {trigger: true})
 
     return IndexView

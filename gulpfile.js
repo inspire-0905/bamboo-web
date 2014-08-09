@@ -6,7 +6,8 @@ var path = require('path'),
     coffee = require('gulp-coffee'),
     less = require('gulp-less'),
     defineModule = require('gulp-define-module'),
-    handlebars = require('gulp-handlebars');
+    handlebars = require('gulp-handlebars'),
+    modRewrite = require('connect-modrewrite');
 
 var compile = function(file) {
     var compileFunc = function(file, method, outpath) {
@@ -41,12 +42,12 @@ var compile = function(file) {
 };
 
 gulp.task('clean', function() {
-    gulp.src(['src/**/*.js', '!src/js/vender/**/*.js', 'src/**/*.css', '!src/js/vender/**/*.css'], {
+    return gulp.src(['src/**/*.js', '!src/js/vender/**/*.js', 'src/**/*.css', '!src/js/vender/**/*.css'], {
         read: false
-    }).pipe(clean());
+    }).pipe(clean({force: true}));
 });
 
-gulp.task('compile', function() {
+gulp.task('compile', ['clean'], function() {
     compile();
 });
 
@@ -54,7 +55,14 @@ gulp.task('connect', function() {
     connect.server({
         port: '8000',
         root: 'src',
-        livereload: true
+        livereload: true,
+        middleware: function() {
+            return [
+                modRewrite([
+                    '^/[A-Za-z]+$ /index.html'
+                ])
+            ]
+        }
     });
 });
 
@@ -67,5 +75,5 @@ gulp.task('watch', function() {
     });
 });
 
-gulp.task('default', ['clean', 'compile', 'connect', 'watch']);
-gulp.task('release', ['clean', 'compile']);
+gulp.task('default', ['compile', 'connect', 'watch']);
+gulp.task('release', ['compile']);

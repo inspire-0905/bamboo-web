@@ -24,6 +24,7 @@
     "gulp-clean": "^0.3.1",
     "gulp-util": "^2.2.20",
     "gulp-define-module": "^0.1.1",
-    "gulp-handlebars": "^2.1.0"
+    "gulp-handlebars": "^2.1.0",
+    "connect-modrewrite": "^0.7.7"
   }
 }
