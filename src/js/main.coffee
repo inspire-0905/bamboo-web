@@ -34,23 +34,34 @@ require ['backbone', 'handlebars', 'AppModel'], (Backbone, Handlebars, AppModel)
             'index': 'index'
             '': 'index'
 
-        main: () ->
+        reset: () ->
 
+        render: (viewName) ->
+
+            that = @
             NProgress.start()
-            require ['MainView'], (MainView) ->
-                $('.container').hide()
-                $container = (new MainView()).render()
+            that.cachedView = that.cachedView or {}
+
+            require [viewName], (View) ->
+
+                # cache view
+                if not that.cachedView[viewName]
+                    that.cachedView[viewName] = new View()
+
+                view = that.cachedView[viewName]
+
+                $('.container').hide().empty()
+                $container = view.render()
                 $container.fadeIn()
                 NProgress.done()
+
+        main: () ->
+
+            @render('MainView')
 
         index: () ->
 
-            NProgress.start()
-            require ['IndexView'], (IndexView) ->
-                $('.container').hide()
-                $container = (new IndexView()).render()
-                $container.fadeIn()
-                NProgress.done()
+            @render('IndexView')
 
     window.workspace = new Workspace()
     window.App = new AppModel()

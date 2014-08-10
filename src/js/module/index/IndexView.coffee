@@ -18,13 +18,12 @@ define ['backbone', 'module/index/template', 'module/index/IndexModel'], (Backbo
             NProgress.start()
             # invoke api
             @model.login({
-                email: '',
-                password: ''
+                email: 'imeoer@gmail.com',
+                password: 'songsong',
+                realname: 'songsong'
             }).done (data) ->
                 workspace.navigate('main', {trigger: true})
-            .fail (err) ->
-                alert JSON.stringify(err)
-            .always () ->
-                NProgress.done()
+            .fail (data) ->
+                alert data
 
     return IndexView

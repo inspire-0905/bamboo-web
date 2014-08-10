@@ -18,14 +18,28 @@ define [], () ->
 
             baseURL = 'http://api.ctshare.com'
 
-            data = {} if not data
-
-            return $.ajax
+            deferred = $.ajax
                 type: type
                 url: "#{baseURL}#{method}"
-                dataType: 'JSON',
+                dataType: 'json'
                 jsonp: false
-                data: JSON.stringify _.pick(data, define)
+                data: _.pick(data or {}, define)
+
+            returnDeferred = $.Deferred()
+
+            deferred.done (result) ->
+                console.log(result)
+                if not result.code
+                    returnDeferred.resolve(result.data)
+                else
+                    returnDeferred.reject(result.data)
+            .fail (result) ->
+                console.log(result)
+                returnDeferred.reject('Server or network exception')
+            .always () ->
+                NProgress.done()
+
+            return returnDeferred
     }
 
     return AppModel
