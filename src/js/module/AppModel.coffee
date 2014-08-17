@@ -12,6 +12,9 @@ define [], () ->
             register: (data) ->
                 return AppModel.apiRequest('POST', '/auth/register', ['email', 'password', 'realname'], data)
 
+            feeds: (data) ->
+                return AppModel.apiRequest('GET', '/feeds', [], data)
+
     , {
 
         apiRequest: (type, method, define, data) ->
@@ -33,9 +36,11 @@ define [], () ->
                     returnDeferred.resolve(result.data)
                 else
                     returnDeferred.reject(result.data)
+
             .fail (result) ->
                 console.log(result)
                 returnDeferred.reject('Server or network exception')
+
             .always () ->
                 NProgress.done()
 

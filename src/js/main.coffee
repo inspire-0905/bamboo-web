@@ -30,13 +30,15 @@ require ['backbone', 'handlebars', 'AppModel'], (Backbone, Handlebars, AppModel)
 
         routes:
 
-            'main': 'main'
-            'index': 'index'
             '': 'index'
+            'index': 'index'
+            'login': 'login'
+            'register': 'register'
+            'main': 'main'
 
         reset: () ->
 
-        render: (viewName) ->
+        render: (viewName, data) ->
 
             that = @
             NProgress.start()
@@ -51,17 +53,25 @@ require ['backbone', 'handlebars', 'AppModel'], (Backbone, Handlebars, AppModel)
                 view = that.cachedView[viewName]
 
                 $('.container').hide().empty()
-                $container = view.render()
+                $container = view.render(data)
                 $container.fadeIn()
                 NProgress.done()
-
-        main: () ->
-
-            @render('MainView')
 
         index: () ->
 
             @render('IndexView')
+
+        login: () ->
+
+            @render('IndexView', 'login')
+
+        register: () ->
+
+            @render('IndexView', 'register')
+
+        main: () ->
+
+            @render('MainView')
 
     window.workspace = new Workspace()
     window.App = new AppModel()

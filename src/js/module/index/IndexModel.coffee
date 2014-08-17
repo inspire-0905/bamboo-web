@@ -8,4 +8,6 @@ define ['AppModel'], (AppModel) ->
 
         register: (data) -> return App.user.register(data)
 
+        feeds: (data) -> return App.user.feeds(data)
+
     return IndexModel
