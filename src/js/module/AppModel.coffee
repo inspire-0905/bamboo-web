@@ -39,7 +39,7 @@ define [], () ->
 
             .fail (result) ->
                 console.log(result)
-                returnDeferred.reject('Server or network exception')
+                returnDeferred.reject('服务端或网络异常')
 
             .always () ->
                 NProgress.done()

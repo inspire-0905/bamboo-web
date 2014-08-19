@@ -3,10 +3,15 @@ require.config
     shim:
         underscore:
             exports: '_'
+        jquery_plugin:
+            deps: [
+                'jquery'
+            ]
         backbone:
             deps: [
                 'underscore'
                 'jquery'
+                'jquery_plugin'
             ]
             exports: 'Backbone'
         handlebars:
@@ -16,6 +21,7 @@ require.config
 
     paths:
         jquery: 'vender/jquery-2.1.1.min'
+        jquery_plugin: 'vender/jquery.plugin'
         underscore: 'vender/underscore-1.6.min'
         backbone: 'vender/backbone-1.1.2.min'
         handlebars: 'vender/handlebars-1.3.0.min'
