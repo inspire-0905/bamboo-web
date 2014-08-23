@@ -8,6 +8,7 @@ define ['backbone', 'module/index/template', 'module/index/IndexModel'], (Backbo
 
             'click .submit': 'submit'
             'click .switch .btn': 'switch'
+            'keypress .mail-input, .pass-input': 'inputPress'
 
         initialize: () ->
 
@@ -18,15 +19,6 @@ define ['backbone', 'module/index/template', 'module/index/IndexModel'], (Backbo
             that = @
             @$el.html template()
 
-            @$el.find('.mail-input').tipsy({trigger: 'manual', fade: true, gravity: 's'})
-            @showErrorTip = _.throttle () ->
-                $input = that.$el.find('.mail-input')
-                $input.tipsy('show')
-                _.delay () ->
-                    $input.tipsy('hide')
-                , 2500
-            , 1
-
             if data is 'login'
                 @switch('login')
             else if data is 'register'
@@ -34,23 +26,72 @@ define ['backbone', 'module/index/template', 'module/index/IndexModel'], (Backbo
             _.defer () -> that.$el.find('.mail-input').focus()
             return @$el
 
+        validateEmail: (email) ->
+
+            emailRegex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            emailRegex.test(email)
+
+        showErrorTip: ($dom, tip) ->
+
+            $dom.tipsy({trigger: 'manual', fade: true, gravity: 's'})
+                .attr('original-title', tip)
+                .tipsy('show')
+                .focus()
+            _.delay () ->
+                $dom.tipsy('hide')
+            , 2500
+
+        dealSuccess: (data) ->
+
+            $.localStorage('token', data.token)
+
+        inputPress: (event) ->
+
+            @submit() if event.keyCode is 13
+
         submit: () ->
 
             that = @
 
+            $mail = that.$el.find('.mail-input')
+            $pass = that.$el.find('.pass-input')
+
+            mail = $.trim($mail.val())
+            pass = $pass.val()
+
+            if @isRegisterState
+
+                if not mail or not @validateEmail(mail)
+                    @showErrorTip($mail, '邮箱地址不正确')
+                    return
+
+                if not pass or pass.length < 6
+                    @showErrorTip($pass, '密码至少为6位')
+                    return
+
+            else
+
+                if not mail
+                    @showErrorTip($mail, '请输入邮箱')
+                    return
+
+                if not pass
+                    @showErrorTip($pass, '请输入密码')
+                    return
+
             NProgress.start()
-            # invoke api
 
             invoke = if @isRegisterState then @model.register else @model.login
 
             invoke({
-                email: that.$el.find('.mail-input').val(),
-                password: that.$el.find('.mail-pass').val()
+                email: mail,
+                password: pass
             }).done (data) ->
+                that.dealSuccess(data)
                 workspace.navigate('main', {trigger: true, replace: false})
             .fail (data) ->
-                that.$el.find('.mail-input').attr('original-title', data)
-                that.showErrorTip()
+                that.showErrorTip($mail, data)
+                $mail.focus()
 
         switch: (event) ->
 

@@ -26,9 +26,11 @@ require.config
         backbone: 'vender/backbone-1.1.2.min'
         handlebars: 'vender/handlebars-1.3.0.min'
         nprogress: 'vender/nprogress/nprogress'
+
         AppModel: 'module/AppModel'
         IndexView: 'module/index/IndexView'
         MainView: 'module/main/MainView'
+        PersonView: 'module/person/PersonView'
 
 require ['backbone', 'handlebars', 'AppModel'], (Backbone, Handlebars, AppModel) ->
 
@@ -77,7 +79,8 @@ require ['backbone', 'handlebars', 'AppModel'], (Backbone, Handlebars, AppModel)
 
         main: () ->
 
-            @render('MainView')
+            @render('PersonView')
+            # @render('MainView')
 
     window.workspace = new Workspace()
     window.App = new AppModel()

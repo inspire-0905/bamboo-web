@@ -19,14 +19,18 @@ define [], () ->
 
         apiRequest: (type, method, define, data) ->
 
-            baseURL = 'http://api.ctshare.com'
+            baseURL = 'http://api.inkpaper.io'
+
+            token = $.localStorage('token')
+
+            data = _.extend _.pick(data or {}, define), {token: token}
 
             deferred = $.ajax
                 type: type
                 url: "#{baseURL}#{method}"
                 dataType: 'json'
                 jsonp: false
-                data: _.pick(data or {}, define)
+                data: data
 
             returnDeferred = $.Deferred()
 
