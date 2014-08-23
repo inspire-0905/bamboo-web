@@ -34,21 +34,8 @@
 						border: 0;
 						// min-width: 261px;
 						height: 28px;
-						&:focus {
-							outline: 0;
-						}
-						&:empty {
-							line-height: 35px;
-							margin-top: 10px;
-							&:before {
-								content: "在此处键入文章标题";
-						        color: #ccc;
-						        font-style: italic;
-						        // position: absolute;
-						        // top: -4px;
-						        // left: 2px;
-						        cursor: text;
-							}
+						.contenteditable:empty:before {
+							content: "在此处键入文章标题";
 						}
 					}
 				}
