@@ -1,42 +1,13 @@
-// setting page
-
-#person {
-    background: rgba(0,0,0,0.6);
-    height: 100%;
-    -moz-box-pack: center;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -ms-flex-align: start;
-    -moz-box-align: start;
-    -webkit-box-align: start;
-    -webkit-align-items: flex-start;
-    align-items: flex-start;
-    left: 0;
-    position: fixed;
-    top: 0;
-    overflow-y: auto;
-    width: 100%;
-    z-index: 1;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: flex;
-    // display: none;
-}
-
 .input-wrap {
-	width: 440px;
+	width: 550px;
 	padding: 4px;
-	border: 1px #ccc solid;
+	border: 1px #ddd solid;
 	height: 22px;
 	input {
 		float: left;
 		width: 400px;
 		font-style: italic;
-		font-size: 12px;
+		font-size: 14px;
 		border: 0;
 		margin-top: 2px;
 		margin-left: 3px;
@@ -47,8 +18,8 @@
 		float: right;
 		margin-right: 5px;
 		font-weight: bold;
-		font-size: 12px;
-		margin-top: 3px;
+		font-size: 14px;
+		margin-top: 4px;
 		cursor: pointer;
 		opacity: 0.8;
 		&:hover {
@@ -57,16 +28,15 @@
 	}
 }
 
-.person-inner {
+#person {
     // display: none;
     width: 562px;
-    // height: 765px;
     background-color: #fff;
     border-radius: 4px;
-    border: 1px #444 solid;
     position: relative;
     z-index: 1;
-    margin: 60px 0 80px;
+    margin: 0 auto;
+    margin-top: 75px;
     color: #fff;
     .close {
         position: absolute;
@@ -78,33 +48,32 @@
             opacity: 1;
         }
     }
-    .menu {
-        position: absolute;
-        left: 18px;
-        top: 20px;
-        font-size: 14px;
-        // opacity: 0.8;
-        .icon-btn {
-            font-size: 16px;
-        }
-        .setting {
-            margin-bottom: 4px;
-            .icon-btn {
-                margin-right: 4px;
-            }
-        }
-        .logout {
-            .icon-btn {
-                font-size: 22px;
-                margin-left: -4px;
-            }
-        }
-    }
+    // .menu {
+    //     position: absolute;
+    //     left: 18px;
+    //     top: 20px;
+    //     font-size: 14px;
+    //     .icon-btn {
+    //         font-size: 12px;
+    //     }
+    //     .setting {
+    //         margin-bottom: 4px;
+    //         .icon-btn {
+    //             margin-right: 4px;
+    //         }
+    //     }
+    //     .logout {
+    //         .icon-btn {
+    //             font-size: 22px;
+    //             margin-left: -4px;
+    //         }
+    //     }
+    // }
     .info {
     	position: absolute;
-    	right: 12px;
+    	right: 18px;
     	top: 203px;
-    	font-size: 12px;
+    	font-size: 14px;
     	font-style: italic;
     	float: right;
     	text-align: right;
@@ -115,8 +84,8 @@
     		margin-right: 8px;
     	}
     	.icon-btn {
-    		font-size: 16px;
-    		margin-left: 2px;
+    		font-size: 14px;
+    		margin-left: 8px;
     		color: #fff;
     	}
     	.count {
@@ -128,15 +97,16 @@
     .header {
         width: 100%;
         height: 264px;
-        border-radius: 4px 4px 0 0;
+        border-radius: 7px;
         background: url(../img/person_cover.png);
         .cover {
             height: 100%;
-            border-radius: 4px 4px 0 0;
+            border-radius: 7px;
             background: url(../img/cover.png);
             .gradient {
                 height: 100%;
                 width: 100%;
+                border-radius: 7px;
                 float: left;
             }
         }
@@ -154,33 +124,46 @@
             .nick {
                 font-weight: bold;
                 margin-top: 18px;
-                font-size: 18px;
+                font-size: 20px;
             }
             .motto {
-                margin-top: 2px;
-                font-size: 14px;
+                margin-top: 8px;
+                font-size: 16px;
                 color: #eee;
             }
         }
     }
     .page-setting {
     	color: #393939;
-    	padding: 35px;
+    	margin-top: 100px;
     	.setting-group {
-    		margin-bottom: 45px;
+    		margin-bottom: 75px;
 	    	.head {
-	    		font-weight: bold;
-	    		padding-left: 15px;
-	    		border-left: 4px #282828 solid;
-	    		font-size: 16px;
+                .main {
+                    font-size: 21px;
+                    display: block;
+                }
+                .sub {
+                    font-size: 12px;
+                    color: #ccc;
+                    display: block;
+                    margin-top: 5px;
+                }
+	    		padding-right: 15px;
+                width: 100px;
+                text-align: right;
+                color: #333;
+                margin-left: -150px;
+                float: left;
 	    	}
 	    	.preface {
-	    		text-indent: 29px;
+	    		// text-indent: 29px;
+                line-height: 24px;
 	    	}
 	    	.content {
 	    		margin-top: 20px;
 	    		color: #5b5b5b;
-	    		font-size: 14px;
+	    		font-size: 16px;
 		    	.social-list {
 		    		margin-bottom: 15px;
 		    		.douban {
@@ -188,25 +171,26 @@
 		    		}
 		    		.split {
 		    			font-weight: bold;
+                        padding: 0 5px 0 5px;
 		    		}
 		    	}
 	    		.password {
 	    			.input-split {
 	    				float: left;
 	    				font-weight: bold;
-	    				margin-top: 2px;
+	    				margin-top: 3px;
 	    				margin-left: 5px;
+                        margin-right: 4px;
 	    			}
 	    			input {
-	    				font-size: 12px;
 	    				margin-right: 5px;
-	    				width: 112px;
+	    				width: 147px;
 	    				float: left;
 	    			}
 	    		}
 	    	}
 	    	.content-padding {
-	    		padding-left: 20px;
+	    		// padding-left: 20px;
 	    	}
     	}
     }
