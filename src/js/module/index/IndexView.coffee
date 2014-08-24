@@ -43,7 +43,7 @@ define ['backbone', 'module/index/template', 'module/index/IndexModel'], (Backbo
 
         dealSuccess: (data) ->
 
-            $.localStorage('token', data.token)
+            $.localStorage('token', data.access_token)
 
         inputPress: (event) ->
 
@@ -65,8 +65,8 @@ define ['backbone', 'module/index/template', 'module/index/IndexModel'], (Backbo
                     @showErrorTip($mail, '邮箱地址不正确')
                     return
 
-                if not pass or pass.length < 6
-                    @showErrorTip($pass, '密码至少为6位')
+                if not pass or pass.length < 6 or pass.length > 16
+                    @showErrorTip($pass, '密码位数在6－16之间')
                     return
 
             else
@@ -82,6 +82,8 @@ define ['backbone', 'module/index/template', 'module/index/IndexModel'], (Backbo
             NProgress.start()
 
             invoke = if @isRegisterState then @model.register else @model.login
+
+            # invoke = @model.feeds
 
             invoke({
                 email: mail,

@@ -23,14 +23,15 @@ define [], () ->
 
             token = $.localStorage('token')
 
-            data = _.extend _.pick(data or {}, define), {token: token}
-
             deferred = $.ajax
+
                 type: type
                 url: "#{baseURL}#{method}"
                 dataType: 'json'
                 jsonp: false
-                data: data
+                data: _.pick(data or {}, define)
+                crossDomain: true
+                headers: {Authorization: "Bearer #{token}"}
 
             returnDeferred = $.Deferred()
 

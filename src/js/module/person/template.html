@@ -1,15 +1,35 @@
-<div class="home">
+<!-- <div class="home">
     <span aria-hidden="true" class="icon-btn icon icon-layers"></span><span class="title">首页</span>
-</div>
+</div> -->
 <div class="inner">
+    <div class="head">
+        <span aria-hidden="true" class="icon-btn icon icon-settings"></span><span class="title">账户设置</span>
+    </div>
     <article class="page-setting">
+        <div class="setting-group">
+            <div class="head">
+                <span class="main">电子邮箱</span>
+                <span class="sub">EMAIL</span>
+            </div>
+            <div class="content content-padding">
+                <div class="input-wrap">
+                    <input placeholder="填写电子邮箱地址"></input>
+                    <div class="confirm">确认</div>
+                </div>
+            </div>
+        </div>
         <div class="setting-group">
             <div class="head">
                 <span class="main">基本信息</span>
                 <span class="sub">BASIC</span>
             </div>
             <div class="content content-padding">
-                <div class="avatar"></div>
+                <div class="filedrag avatar">
+                    <div class="filedrag-droparea"><img class="filedrag-preview" src="/img/avatar.png"></div>
+                    <div class="filedrag-progress"></div>
+                    <input type="file" class="filedrag-input" name="file-input">
+                </div>
+                <!-- <div class="avatar"></div> -->
                 <div class="info">
                     <div class="nick">简时文书</div>
                     <div class="motto contenteditable" contenteditable></div>
@@ -30,6 +50,8 @@
             </div>
             <div class="content content-padding">
                 <div class="social-list">
+                    <span class="type">个人网站</span>
+                    <span class="split"> / </span>
                     <span class="type">微博</span>
                     <span class="split"> / </span>
                     <span class="type douban">豆瓣</span>
@@ -41,8 +63,6 @@
                     <span class="type">Dribbble</span>
                     <span class="split"> / </span>
                     <span class="type">Pixiv</span>
-                    <span class="split"> / </span>
-                    <span class="type">Instagram</span>
                 </div>
                 <div class="input-wrap">
                     <input placeholder="填写豆瓣个人主页网址"></input>
@@ -72,4 +92,5 @@
             <div class="content preface">删除所有文章后方可销毁该账户</div>
         </div>
     </article>
+    <div class="submit icon-btn"><span aria-hidden="true" class="icon icon-book-open"></span><span class="title">确认设置</span></div>
 </div>
