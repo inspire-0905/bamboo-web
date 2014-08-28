@@ -1,12 +1,15 @@
 require.config
 
     shim:
+
         underscore:
             exports: '_'
+
         jquery_plugin:
             deps: [
                 'jquery'
             ]
+
         backbone:
             deps: [
                 'underscore'
@@ -14,12 +17,15 @@ require.config
                 'jquery_plugin'
             ]
             exports: 'Backbone'
+
         handlebars:
             exports: 'Handlebars'
+
         AppModel:
             deps: ['backbone']
 
     paths:
+
         jquery: 'vender/jquery-2.1.1.min'
         jquery_plugin: 'vender/jquery.plugin'
         underscore: 'vender/underscore-1.6.min'
@@ -31,6 +37,7 @@ require.config
         IndexView: 'module/index/IndexView'
         MainView: 'module/main/MainView'
         PersonView: 'module/person/PersonView'
+        WriteView: 'module/write/WriteView'
 
 require ['backbone', 'handlebars', 'AppModel'], (Backbone, Handlebars, AppModel) ->
 
@@ -43,6 +50,7 @@ require ['backbone', 'handlebars', 'AppModel'], (Backbone, Handlebars, AppModel)
             'login': 'login'
             'register': 'register'
             'main': 'main'
+            'write': 'write'
 
         reset: () ->
 
@@ -79,8 +87,12 @@ require ['backbone', 'handlebars', 'AppModel'], (Backbone, Handlebars, AppModel)
 
         main: () ->
 
-            @render('PersonView')
-            # @render('MainView')
+            # @render('PersonView')
+            @render('MainView')
+
+        write: () ->
+
+            @render('WriteView')
 
     window.workspace = new Workspace()
     window.App = new AppModel()

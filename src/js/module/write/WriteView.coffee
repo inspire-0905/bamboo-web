@@ -1,8 +1,8 @@
-define ['backbone', 'module/main/template'], (Backbone, template) ->
+define ['backbone', 'module/write/template'], (Backbone, template) ->
 
-    MainView = Backbone.View.extend
+    WriteView = Backbone.View.extend
 
-        el: '#main'
+        el: '#write'
 
         events:
 
@@ -18,4 +18,4 @@ define ['backbone', 'module/main/template'], (Backbone, template) ->
 
         	workspace.navigate('write', {trigger: true})
 
-    return MainView
+    return WriteView
