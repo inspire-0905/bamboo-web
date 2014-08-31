@@ -1,98 +1,55 @@
 // article page
 
-#article .content, #article-editor {
-	font-size: 19px;
-	letter-spacing: 1px;
-	line-height: 1.7;
-	color: #2f2f2f;
-	p {
-		text-indent: 39px;
-		margin-bottom: 40px;
-		margin-top: 40px;
-	}
-	img {
-		width: 664px;
-		cursor: pointer;
-	}
-	.image {
-		border-radius: 6px;
-	}
-	.cover {
-		background-color: #000;
-	}
-}
-
-#article, #article-editor {
-	width: 664px;
-	margin: 0 auto;
-	padding-top: 30px;
-	padding-bottom: 250px;
-	.author-info {
-	    position: absolute;
-	    margin-left: -240px;
-	    width: 150px;
-	    border-right: 1px #bbb dashed;
-	    padding: 10px 20px 10px 0;
-		.avatar {
-		    width: 67px;
-		    height: 67px;
-		    border-radius: 67px;
-		    background: url(../img/avatar.png) no-repeat;
-		    border: 1px #eee solid;
-		    cursor: pointer;
-		    float: right;
-		}
-		.nick {
-			text-align: right;
-			width: 100%;
-			display: inline-block;
-			margin-top: 20px;
-			font-size: 18px;
-			// font-weight: bold;
-		}
-		.motto {
-			margin-top: 15px;
-			color: #aaa;
-			width: 100%;
-		    text-align: right;
-		    line-height: 24px;
-		    display: inline-block;
-		}
-	}
-	.title {
-		font-size: 32px;
-		margin-top: 70px;
-		text-align: center;
-		// font-weight: 400;
-	}
-	.article-info {
-		width: 100%;
-		margin: 0 auto;
-		font-size: 18px;
-		margin-top: 30px;
-		margin-bottom: 70px;
-		text-align: center;
-		color: #bbbbbb;
-		font-style: italic;
-		.item {
-			margin-right: 2px;
-		}
-		.icon-book-open {
-			margin-right: 10px;
-			// font-size: 26px;
-		}
-	}
-	.article-info.article-fin {
-		margin-top: 80px;
-		margin-bottom: 65px;
-		.icon-book-open {
-			font-size: 28px;
-			margin-right: 5px;
-		}
-		font-size: 26px;
-		font-style: normal;
-	}
+#article, #write {
 	.article {
+		width: 664px;
+		margin: 0 auto;
+		padding-top: 110px;
+		.author {
+		    position: absolute;
+		    margin-left: -240px;
+		    width: 150px;
+		    border-right: 1px #bbb dashed;
+		    padding: 10px 20px 10px 0;
+			.avatar {
+			    width: 67px;
+			    height: 67px;
+			    border-radius: 67px;
+			    background: url(../img/avatar.png) no-repeat;
+			    border: 1px #eee solid;
+			    cursor: pointer;
+			    float: right;
+			}
+			.nick {
+				text-align: right;
+				width: 100%;
+				display: inline-block;
+				margin-top: 20px;
+				font-size: 18px;
+				// font-weight: bold;
+			}
+			.motto {
+				margin-top: 15px;
+				color: #aaa;
+				width: 100%;
+			    text-align: right;
+			    line-height: 22px;
+			    display: inline-block;
+			    font-size: 14px;
+			}
+		}
+		.title {
+			font-size: 32px;
+			// padding: 50px;
+			margin: 0 auto;
+			// margin-top: 70px;
+			text-align: center;
+			max-width: 550px;
+			width: 100%;
+			line-height: 52px;
+			letter-spacing: 1px;
+			// font-weight: 400;
+		}
 		.image-info {
 			font-size: 16px;
 			position: absolute;
@@ -106,35 +63,72 @@
 			padding-left: 15px;
 			line-height: 22px;
 		}
-		.header {
-			height: 313px;
-			background: url(../img/thematic.jpg);
-			border-radius: 8px;
-			// margin-top: 80px;
-			.gradient {
-				// opacity: 0.3;
-				border-radius: 8px;
-				width: 100%;
-				height: 100%;
+		.meta {
+			.info {
+				margin-left: 20px;
+				margin-top: 14px;
+				float: left;
+				font-size: 18px;
+				.title {
+					margin-top: 4px;
+					color: #959595;
+					font-size: 14px;
+				}
+			}
+			.tool {
+				float: right;
+				font-size: 26px;
+				margin-top: 18px;
+			}
+		}
+		.content {
+			font-size: 19px;
+			letter-spacing: 1px;
+			line-height: 1.7;
+			color: #2f2f2f;
+			p {
+				text-indent: 39px;
+				margin-bottom: 40px;
+				margin-top: 40px;
+			}
+			img {
+				width: 664px;
+				cursor: pointer;
+			}
+			.image {
+				border-radius: 6px;
+			}
+			.cover {
+				background-color: #000;
 			}
 		}
 	}
-	.article-meta {
-		.info {
-			margin-left: 20px;
-			margin-top: 14px;
-			float: left;
-			font-size: 18px;
-			.title {
-				margin-top: 4px;
-				color: #959595;
-				font-size: 14px;
-			}
+	.info {
+		width: 100%;
+		margin: 0 auto;
+		font-size: 16px;
+		margin-top: 30px;
+		margin-bottom: 70px;
+		text-align: center;
+		color: #bbbbbb;
+		font-style: italic;
+		.item {
+			margin-right: 2px;
 		}
-		.tool {
-			float: right;
-			font-size: 26px;
-			margin-top: 18px;
+		.icon-book-open {
+			margin-right: 8px;
+			font-size: 16px;
+			margin-top: 10px;
 		}
+	}
+	.info.fin {
+		margin-top: 80px;
+		margin-bottom: 65px;
+		.icon-book-open {
+			font-size: 22px;
+			margin-right: 10px;
+		}
+		font-size: 24px;
+		font-style: normal;
 	}
 }

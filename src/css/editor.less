@@ -1,78 +1,58 @@
 // editor
 
-#article-editor {
-	// display: none;
-	padding-top: 0;
-	.article {
-		.header {
-			background: none;
-			.gradient {
-				background: none;
-				.thematic-upload {
-					position: absolute;
-					font-size: 60px;
-					width: 60px;
-					height: 60px;
-					margin-left: -30px;
-					margin-top: 100px;
-					color: #ccc;
-					text-align: center;
-					cursor: pointer;
-					opacity: 0.8;
-					&:hover {
-						opacity: 1;
-					}
-				}
-				.info {
-					.nick {
-						color: #666;
-					}
-					.title {
-						margin-top: 2px;
-						color: #444;
-						background-color: transparent;
-						border: 0;
-						// min-width: 261px;
-						height: 28px;
-						.contenteditable:empty:before {
-							content: "在此处键入文章标题";
-						}
-					}
+#write {
+	.tool {
+		opacity: 0.5;
+		position: absolute;
+		top: 0;
+		right: 0;
+		left: 0;
+		padding: 50px;
+		font-size: 18px;
+		.type {
+			float: left;
+			span {
+				padding: 5px 14px;
+				margin-left: 15px;
+				&.selected {
+					background-color: #333;
+					color: #fff;
 				}
 			}
 		}
-	}
-	#editor {
-		&:empty {
-			line-height: 25px;
-			padding-top: 5px;
-			&:before {
-				content: "键入正文...";
-		        color: #ccc;
-		        font-style: italic;
-		        // position: absolute;
-		        // top: -5px;
-		        // left: 3px;
-		        cursor: text;
+		.publish {
+			padding: 5px 14px;
+			background-color: #333;
+			color: #fff;
+			border-radius: 3px;
+			border: 2px solid #666;
+			float: right;
+			.icon-book-open {
+				display: block;
+				float: left;
+				margin-top: 1px;
+				margin-right: 10px;
 			}
 		}
 	}
-	.editor-btn {
-		font-size: 19px;
-		opacity: 0.7;
-		cursor: pointer;
-		&:hover {
-			opacity: 1;
+	.contenteditable.title:empty {
+		line-height: 38px;
+		padding-top: 14px;
+		&:before {
+			content: "键入文章标题";
+	        color: #ccc;
+	        font-style: italic;
+	        cursor: text;
 		}
 	}
-	.publish {
-		position: absolute;
-		right: 60px;
-		top: 40px;
-	}
-	.light {
-		position: absolute;
-		left: 60px;
-		top: 40px;
+	.contenteditable.content:empty {
+		line-height: 25px;
+		padding-top: 5px;
+		&:before {
+			content: "键入正文，选择文字以调整样式";
+	        color: #ccc;
+	        font-style: italic;
+	        cursor: text;
+		}
 	}
 }
