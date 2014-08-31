@@ -38,6 +38,7 @@ require.config
         MainView: 'module/main/MainView'
         PersonView: 'module/person/PersonView'
         WriteView: 'module/write/WriteView'
+        ArticleView: 'module/article/ArticleView'
 
 require ['backbone', 'handlebars', 'AppModel'], (Backbone, Handlebars, AppModel) ->
 
@@ -50,7 +51,9 @@ require ['backbone', 'handlebars', 'AppModel'], (Backbone, Handlebars, AppModel)
             'login': 'login'
             'register': 'register'
             'main': 'main'
+            'person': 'person'
             'write': 'write'
+            'article': 'article'
 
         reset: () ->
 
@@ -87,12 +90,19 @@ require ['backbone', 'handlebars', 'AppModel'], (Backbone, Handlebars, AppModel)
 
         main: () ->
 
-            # @render('PersonView')
             @render('MainView')
+
+        person: () ->
+
+            @render('PersonView')
 
         write: () ->
 
             @render('WriteView')
+
+        article: () ->
+
+            @render('ArticleView')
 
     window.workspace = new Workspace()
     window.App = new AppModel()
