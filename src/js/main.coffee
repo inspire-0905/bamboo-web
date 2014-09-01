@@ -24,6 +24,9 @@ require.config
         AppModel:
             deps: ['backbone']
 
+        WriteView:
+            deps: ['medium_editor']
+
     paths:
 
         jquery: 'vender/jquery-2.1.1.min'
@@ -32,6 +35,7 @@ require.config
         backbone: 'vender/backbone-1.1.2.min'
         handlebars: 'vender/handlebars-1.3.0.min'
         nprogress: 'vender/nprogress/nprogress'
+        medium_editor: 'vender/medium-editor'
 
         AppModel: 'module/AppModel'
         IndexView: 'module/index/IndexView'

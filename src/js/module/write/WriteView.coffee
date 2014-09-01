@@ -13,6 +13,8 @@ define ['backbone', 'module/write/template'], (Backbone, template) ->
         render: () ->
 
             @$el.html template()
+            editor = new MediumEditor('.content')
+            @$el
 
         write: () ->
 
