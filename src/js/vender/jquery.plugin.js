@@ -445,3 +445,4 @@ function initUploaders(post_target, onComplete) {
         $('.filedrag-input').hide();
     }
 }
+

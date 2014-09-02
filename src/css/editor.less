@@ -55,4 +55,25 @@
 	//         cursor: text;
 	// 	}
 	// }
+	.toolbar {
+		position: absolute;
+		border: 2px #bbb solid;
+		width: 40px;
+		height: 40px;
+		border-radius: 40px;
+		background-color: #eee;
+		top: 0;
+		display: none;
+		cursor: pointer;
+		opacity: 0.4;
+		transition-property: top;
+		transition-duration: 0.1s;
+		transition-timing-function: linear;
+		font-size: 34px;
+		color: #999;
+		text-align: center;
+		&:hover {
+			opacity: 1;
+		}
+	}
 }
