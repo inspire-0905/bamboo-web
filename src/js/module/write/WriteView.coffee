@@ -12,8 +12,18 @@ define ['backbone', 'module/write/template'], (Backbone, template) ->
 
         render: () ->
 
+            that = @
+
             @$el.html template()
             editor = new MediumEditor('.content')
+
+            $(document).on 'mousedown mouseup', (event) ->
+
+                $target = $(event.target)
+                
+                if not $target.parents('.content').length
+                    
+                    that.$el.find('.content').focusEnd()
 
             @initToolbar()
 
@@ -23,7 +33,7 @@ define ['backbone', 'module/write/template'], (Backbone, template) ->
 
             that = @
 
-            @$el.find('.content').on 'keyup mouseup', () ->
+            @$el.find('.content').on 'focus keyup mouseup', () ->
 
                 $focusDom = $(document.getSelection().focusNode)
                 $toolbar = that.$el.find('.toolbar')
