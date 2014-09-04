@@ -45,16 +45,16 @@
 	        cursor: text;
 		}
 	}
-	// .contenteditable.content:empty {
-	// 	line-height: 25px;
-	// 	padding-top: 5px;
-	// 	&:before {
-	// 		content: "键入正文，选择文字以调整样式";
-	//         color: #ccc;
-	//         font-style: italic;
-	//         cursor: text;
-	// 	}
-	// }
+	.contenteditable.content:empty {
+		line-height: 25px;
+		padding-top: 5px;
+		&:before {
+			content: "键入文章内容";
+	        color: #ccc;
+	        font-style: italic;
+	        cursor: text;
+		}
+	}
 	.toolbar {
 		position: absolute;
 		border: 2px #bbb solid;
@@ -65,15 +65,31 @@
 		top: 0;
 		display: none;
 		cursor: pointer;
-		opacity: 0.4;
+		opacity: 0.3;
 		transition-property: top;
 		transition-duration: 0.1s;
-		transition-timing-function: linear;
+		transition-timing-function: ease-out;
 		font-size: 34px;
 		color: #999;
 		text-align: center;
 		&:hover {
-			opacity: 1;
+			opacity: 0.5;
+		}
+		input {
+			width: 50px;
+			position: absolute;
+			height: 50px;
+			left: 0;
+			background-color: #f00;
+			top: 0;
+			opacity: 0;
+			cursor: pointer;
+		}
+	}
+	img {
+		cursor: default;
+		&:hover {
+			border: 1px #ccc solid !important;
 		}
 	}
 }
