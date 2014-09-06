@@ -1,5 +1,3 @@
-/*global module, console*/
-
 function MediumEditor(elements, options) {
     'use strict';
     return this.init(elements, options);
@@ -114,7 +112,7 @@ if (typeof module === 'object') {
             cleanPastedHTML: false,
             delay: 0,
             diffLeft: 0,
-            diffTop: -20,
+            diffTop: -10,
             disableReturn: false,
             disableDoubleReturn: false,
             disableToolbar: false,

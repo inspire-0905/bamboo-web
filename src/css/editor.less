@@ -7,16 +7,19 @@
 		top: 0;
 		right: 0;
 		left: 0;
-		padding: 50px;
+		padding: 40px;
 		font-size: 18px;
 		.type {
-			float: left;
+			float: right;
+			margin-top: 8px;
+			margin-right: 60px;
 			span {
-				padding: 5px 14px;
-				margin-left: 15px;
+				padding: 4px 14px;
+				margin-left: 0px;
+				color: #aaa;
 				&.selected {
-					background-color: #333;
-					color: #fff;
+					// background-color: #333;
+					color: #333;
 				}
 			}
 		}
@@ -49,7 +52,7 @@
 		line-height: 23px;
 		padding-top: 5px;
 		&:before {
-			content: "键入文章内容";
+			content: "键入正文...";
 	        color: #ccc;
 	        font-style: italic;
 	        cursor: text;
@@ -89,7 +92,7 @@
 	img {
 		cursor: default;
 		&:hover {
-			border: 1px #eee solid !important;
+			border: 1px #ddd solid !important;
 		}
 	}
 	.content {
@@ -98,10 +101,10 @@
 				border: 2px #aaa solid !important;
 			}
 			&::selection {
-				background: #3a3a3a;
+				background: rgba(0, 0, 0, 0.1);
 			}
 			&::-moz-selection {
-				background: #3a3a3a;
+				background: rgba(0, 0, 0, 0.1);
 			}
 		}
 	}

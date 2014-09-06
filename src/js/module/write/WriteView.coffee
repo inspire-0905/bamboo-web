@@ -8,20 +8,29 @@ define ['backbone', 'module/write/template'], (Backbone, template) ->
 
             'click .write': 'write'
             'click img': 'selectImg'
-            'blur .content': 'focusEnd'
 
         initialize: () ->
+
+        isInDomByClass: ($target, className) ->
+
+            return $target.hasClass(className) or $target.parents(".#{className}").length
 
         render: () ->
 
             that = @
 
             @$el.html template()
-            editor = new MediumEditor('.content')
+            editor = new MediumEditor('.content', {
+                diffTop: -20
+            })
 
-            $(document).on 'mouseup', () ->
+            $(document).on 'mouseup', (event) ->
 
-                that.$el.find('.content').focusEnd()
+                $target = $(event.target)
+                if not (that.isInDomByClass($target, 'content') or
+                    that.isInDomByClass($target, 'title') or
+                    that.isInDomByClass($target, 'medium-editor-toolbar'))
+                        that.$el.find('.content').focusEnd()
 
             @initToolbar()
 
@@ -31,10 +40,6 @@ define ['backbone', 'module/write/template'], (Backbone, template) ->
 
             $img = $(event.target)
             $img.setRangeByDom() #.addClass('selected')
-
-        focusEnd: (event) ->
-
-            $(event.target).focusEnd()
 
         initToolbar: () ->
 
@@ -50,6 +55,10 @@ define ['backbone', 'module/write/template'], (Backbone, template) ->
                     $focusDom.prop('tagName') is 'P' or
                     $focusDom.parents('p').length) and
                     $focusDom.text() is ''
+
+                        $('html, body').animate({
+                            scrollTop: $focusDom.offset().top - 600;
+                        }, 100)
 
                         that.initUpload($toolbar) if not that.toolbar
 
@@ -90,7 +99,10 @@ define ['backbone', 'module/write/template'], (Backbone, template) ->
                             else    
                                 appendDom = "#{appendDom}<p><br/></p>"
 
-                            document.execCommand('insertHTML', true, appendDom)
+                            insertRet = document.execCommand('insertHTML', true, appendDom)
+
+                            if not insertRet
+                                that.$focusDom.html(appendDom)
 
                             that.$focusDom.find('.preview')[0].src = oFREvent.target.result
             })
