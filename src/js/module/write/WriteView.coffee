@@ -8,6 +8,7 @@ define ['backbone', 'module/write/template'], (Backbone, template) ->
 
             'click .write': 'write'
             'click img': 'selectImg'
+            'mouseover li.type': 'focusToolbarInput'
 
         initialize: () ->
 
@@ -40,6 +41,11 @@ define ['backbone', 'module/write/template'], (Backbone, template) ->
 
             $img = $(event.target)
             $img.setRangeByDom() #.addClass('selected')
+
+        focusToolbarInput: (event) ->
+
+            $typeBtn = $(event.target)
+            $typeBtn.find('input.link').focus()
 
         initToolbar: () ->
 
