@@ -743,42 +743,51 @@ function initUploaders(post_target, onComplete) {
 
   $.fn.focusBegin = function() {
     var element = this[0];
-
-    if (this.is('textarea')) {
-      element.focus();
-      element.setSelectionRange(0, 0);
-    } else if (this.is('input')) {
-      element.selectionStart = 0;
-      element.selectionEnd = 0;
-      element.focus()
-    } else {
-      var range = document.createRange();
-      var selection = window.getSelection();
-      range.selectNodeContents(element);
-      range.collapse(true);
-      selection.removeAllRanges();
-      selection.addRange(range);
-    }
+    var range = document.createRange();
+    var selection = window.getSelection();
+    range.selectNodeContents(element);
+    range.collapse(true);
+    selection.removeAllRanges();
+    selection.addRange(range);
   };
 
   $.fn.focusEnd = function() {
     var element = this[0];
+    var range = document.createRange();
+    var selection = window.getSelection();
+    range.selectNodeContents(element);
+    range.collapse(false);
+    selection.removeAllRanges();
+    selection.addRange(range);
+  };
 
-    if (this.is('textarea')) {
-      element.focus();
-      element.setSelectionRange(this.val().length, this.val().length);
-    } else if (this.is('input')) {
-      element.selectionStart = element.value.length;
-      element.selectionEnd = element.value.length;
-      element.focus();
-    } else {
-      var range = document.createRange();
-      var selection = window.getSelection();
-      range.selectNodeContents(element);
-      range.collapse(false);
-      selection.removeAllRanges();
-      selection.addRange(range);
+  $.fn.getRange = function() {
+    if (window.getSelection) {
+        sel = window.getSelection();
+        if (sel.getRangeAt && sel.rangeCount) {
+            range = sel.getRangeAt(0);
+            return range;
+        }
     }
+    return null;
+  };
+
+  $.fn.setRange = function(range) {
+    if (!range) return;
+    var selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+  };
+
+  $.fn.setRangeByDom = function() {
+    var element = this[0];
+    var range = document.createRange();
+    range.setStart(element, 0);
+    range.setEndAfter(element);
+    var selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+    return this;
   };
 
 }));

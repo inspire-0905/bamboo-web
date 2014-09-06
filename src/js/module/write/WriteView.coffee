@@ -6,7 +6,9 @@ define ['backbone', 'module/write/template'], (Backbone, template) ->
 
         events:
 
-        	'click .write': 'write'
+            'click .write': 'write'
+            'click img': 'selectImg'
+            'blur .content': 'focusEnd'
 
         initialize: () ->
 
@@ -17,17 +19,22 @@ define ['backbone', 'module/write/template'], (Backbone, template) ->
             @$el.html template()
             editor = new MediumEditor('.content')
 
-            $(document).on 'mousedown mouseup', (event) ->
+            $(document).on 'mouseup', () ->
 
-                $target = $(event.target)
-                
-                if not $target.parents('.content').length
-                    
-                    that.$el.find('.content').focusEnd()
+                that.$el.find('.content').focusEnd()
 
             @initToolbar()
 
             @$el
+
+        selectImg: (event) ->
+
+            $img = $(event.target)
+            $img.setRangeByDom() #.addClass('selected')
+
+        focusEnd: (event) ->
+
+            $(event.target).focusEnd()
 
         initToolbar: () ->
 
@@ -53,11 +60,11 @@ define ['backbone', 'module/write/template'], (Backbone, template) ->
                         leftPos = that.$focusDom.offset().left
                         topPos = that.$focusDom.offset().top
                         $toolbar.css('left', leftPos - 80 + 'px').css('top', topPos - 8 + 'px')
-                        $toolbar.show()
+                        $toolbar.fadeIn('fast')
 
                 else
 
-                    $toolbar.hide()
+                    $toolbar.fadeOut('fast')
 
         initUpload: ($toolbar) ->
 

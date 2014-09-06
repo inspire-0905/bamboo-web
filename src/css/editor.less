@@ -46,7 +46,7 @@
 		}
 	}
 	.contenteditable.content:empty {
-		line-height: 25px;
+		line-height: 23px;
 		padding-top: 5px;
 		&:before {
 			content: "键入文章内容";
@@ -89,7 +89,20 @@
 	img {
 		cursor: default;
 		&:hover {
-			border: 1px #ccc solid !important;
+			border: 1px #eee solid !important;
+		}
+	}
+	.content {
+		img {
+			&.selected {
+				border: 2px #aaa solid !important;
+			}
+			&::selection {
+				background: #3a3a3a;
+			}
+			&::-moz-selection {
+				background: #3a3a3a;
+			}
 		}
 	}
 }
