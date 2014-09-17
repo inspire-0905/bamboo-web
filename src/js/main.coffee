@@ -25,7 +25,7 @@ require.config
             deps: ['backbone']
 
         WriteView:
-            deps: ['medium_editor']
+            deps: ['medium_editor', 'html2canvas', 'tomarkdown']
 
     paths:
 
@@ -36,6 +36,8 @@ require.config
         handlebars: 'vender/handlebars-1.3.0.min'
         nprogress: 'vender/nprogress/nprogress'
         medium_editor: 'vender/medium-editor'
+        html2canvas: 'vender/html2canvas'
+        tomarkdown: 'vender/to-markdown'
 
         AppModel: 'module/AppModel'
         IndexView: 'module/index/IndexView'

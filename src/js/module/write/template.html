@@ -1,9 +1,13 @@
 <div class="tool">
+    <div class="home">
+        <i class="icon-layers"></i><span></span>
+    </div>
     <div class="publish">
         <i class="icon-book-open"></i><span>发布</span>
     </div>
     <div class="type">
-        <span class="selected">私有</span> / <span>公开</span>
+        <span class="selected">私有</span>
+        <span>公开</span>
     </div>
 </div>
 <div class="article">
@@ -17,7 +21,12 @@
         <i class="icon-book-open"></i>
         <span class="item">选择圈子</span>
     </div>
-    <div class="content contenteditable" contenteditable placeholder=""></div>
+    <ul class="edit-view">
+        <li class="visual active"><i class="icon-book-open"></i></li>
+        <li class="markdown"><i class="icon-pencil"></i></li>
+    </ul>
+    <div class="content visual contenteditable" contenteditable placeholder=""></div>
+    <textarea class="content markdown" placeholder="Markdown格式编辑"></textarea>
 </div>
 <div class="meta">
     <div class="tool">
@@ -41,3 +50,4 @@
         </li>
     </ul>
 </div>
+<img id="xxx" src="">

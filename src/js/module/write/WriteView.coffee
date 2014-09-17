@@ -9,12 +9,18 @@ define ['backbone', 'module/write/template'], (Backbone, template) ->
             'click .write': 'write'
             'click img': 'selectImg'
             'mouseover li.type': 'focusToolbarInput'
+            'click .tool': 'publish'
+            'click .edit-view li': 'modeSwitch'
 
         initialize: () ->
 
         isInDomByClass: ($target, className) ->
 
-            return $target.hasClass(className) or $target.parents(".#{className}").length
+            return $target[0].nodeName in ['INPUT', 'TEXTAREA'] or $target.hasClass(className) or $target.parents(".#{className}").length
+
+        toImg: (canvas) ->
+
+            $('#xxx')[0].src = canvas.toDataURL()
 
         render: () ->
 
@@ -36,6 +42,16 @@ define ['backbone', 'module/write/template'], (Backbone, template) ->
             @initToolbar()
 
             @$el
+
+        publish: () ->
+
+            that = @
+            # html2canvas that.$el.find('.content'), {
+            #     onrendered: (canvas) ->
+            #         that.toImg(canvas)
+            #     useCORS: true
+            #     width: 700
+            # }
 
         selectImg: (event) ->
 
@@ -62,9 +78,9 @@ define ['backbone', 'module/write/template'], (Backbone, template) ->
                     $focusDom.parents('p').length) and
                     $focusDom.text() is ''
 
-                        $('html, body').animate({
-                            scrollTop: $focusDom.offset().top - 600;
-                        }, 100)
+                        # $('html, body').animate({
+                        #     scrollTop: $focusDom.offset().top - 600;
+                        # }, 100)
 
                         that.initUpload($toolbar) if not that.toolbar
 
@@ -87,7 +103,7 @@ define ['backbone', 'module/write/template'], (Backbone, template) ->
 
             # bind toolbar upload event
             $toolbar.dmUploader({
-                
+
                 onNewFile: (id, file) ->
 
                     # show image preview
@@ -102,7 +118,7 @@ define ['backbone', 'module/write/template'], (Backbone, template) ->
 
                             if that.$focusDom.prop('tagName') isnt 'P'
                                 appendDom = "<p>#{appendDom}</p><p><br/></p>"
-                            else    
+                            else
                                 appendDom = "#{appendDom}<p><br/></p>"
 
                             insertRet = document.execCommand('insertHTML', true, appendDom)
@@ -112,6 +128,24 @@ define ['backbone', 'module/write/template'], (Backbone, template) ->
 
                             that.$focusDom.find('.preview')[0].src = oFREvent.target.result
             })
+
+        modeSwitch: (event) ->
+
+            $target = $(event.currentTarget)
+
+            $visual = @$el.find('.content.visual')
+            $markdown = @$el.find('.content.markdown')
+
+            @$el.find('.edit-view li').removeClass('active')
+            @$el.find('.content').hide()
+
+            if $target.hasClass('visual')
+                @$el.find('.edit-view .visual').addClass('active')
+                $visual.show()
+            else
+                @$el.find('.edit-view .markdown').addClass('active')
+                $markdown.val(toMarkdown($visual.html()))
+                $markdown.show()
 
         write: () ->
 

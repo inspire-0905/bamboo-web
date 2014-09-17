@@ -1,6 +1,53 @@
 // editor
 
 #write {
+	.article {
+		height: 100%;
+		position: relative;
+		.edit-view {
+			// display: none;
+			transition-property: opacity;
+			transition-duration: 0.1s;
+			transition-timing-function: ease-out;
+			position: fixed;
+			margin-top: 7px;
+			opacity: 0;
+			margin-left: 664px;
+			padding-left: 40px;
+			&:hover {
+				opacity: 1 !important;
+			}
+			li {
+				font-size: 16px;
+				color: #000;
+				// padding: 6px;
+				width: 35px;
+				height: 35px;
+				line-height: 39px;
+				text-align: center;
+				background-color: #fff;
+				margin-bottom: 10px;
+				border: 1px solid transparent;
+				border-radius: 35px;
+				&.active {
+					border: 1px solid #c1c1c1;
+					background-color: #ebebeb;
+					box-shadow: 0 0 3px rgba(0,0,0,.1) inset;
+					&:hover {
+						border: 1px solid #c1c1c1;
+					}
+				}
+				&:hover {
+					border: 1px solid #ddd;
+				}
+			}
+		}
+		&:hover {
+			.edit-view {
+				opacity: 0.3;
+			}
+		}
+	}
 	.tool {
 		// opacity: 0.5;
 		position: absolute;
@@ -9,17 +56,24 @@
 		left: 0;
 		padding: 40px;
 		font-size: 18px;
+		.home {
+			font-size: 28px;
+			float: left;
+			margin-top: 5px;
+			margin-right: 40px;
+		}
 		.type {
-			float: right;
-			margin-top: 8px;
+			float: left;
+			margin-top: 10px;
 			margin-right: 60px;
+			font-size: 16px;
 			span {
 				padding: 4px 14px;
-				margin-left: 0px;
-				color: #aaa;
+				margin-left: 10px;
+				color: #333;
 				&.selected {
-					// background-color: #333;
-					color: #333;
+					background-color: #333;
+					color: #fff;
 				}
 			}
 		}
@@ -152,6 +206,32 @@
 			&::-moz-selection {
 				background: rgba(0, 0, 0, 0.1);
 			}
+		}
+	}
+	.content.markdown {
+		width: 664px;
+		border: 0;
+		font-size: 19px;
+		display: none;
+		height: 100%;
+		resize: none;
+		padding: 0;
+		.placeholder-style {
+			color: #ccc;
+			font-style: italic;
+			cursor: text;
+		}
+		&::-webkit-input-placeholder {
+			.placeholder-style;
+		}
+		&:-moz-placeholder {
+			.placeholder-style;
+		}
+		&::-moz-placeholder {
+			.placeholder-style;
+		}
+		&:-ms-input-placeholder {
+			.placeholder-style;
 		}
 	}
 }
