@@ -27,6 +27,7 @@ define ['backbone', 'module/write/template'], (Backbone, template) ->
             that = @
 
             @$el.html template()
+            # editor = new Pen(@$el.find('.content.visual')[0])
             editor = new MediumEditor('.content', {
                 diffTop: -20
             })
