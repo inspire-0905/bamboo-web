@@ -1,4 +1,4 @@
-#person {
+#main {
     .home {
         font-size: 24px;
         margin: 35px;
@@ -16,7 +16,7 @@
     .input-wrap {
         // width: 550px;
         padding: 4px;
-        border: 1px #ccc solid;
+        border: 1px #ddd solid;
         height: 22px;
         // float: left;
         // clear: both;
@@ -44,21 +44,26 @@
             }
         }
     }
-    .inner {
+    input[type="file"] {
+        opacity: 0;
+    }
+    .setting {
+        // margin-top: -60px;
         // display: none;
-        width: 562px;
+        // width: 562px;
         background-color: #fff;
         border-radius: 4px;
         // position: relative;
         // z-index: 1;
-        margin: 0 auto;
-        padding-top: 120px;
+        // margin: 0 auto;
+        // padding-top: 120px;
         color: #fff;
         .head {
             font-size: 28px;
             color: #333;
             // font-weight: bold;
             margin-bottom: 20px;
+            margin-left: -20px;
             .icon-btn {
                 margin-top: 1px;
                 float: left;
@@ -71,13 +76,14 @@
         }
         .page-setting {
         	color: #393939;
-        	margin-top: 80px;
+        	// margin-bottom: 100px;
         	.setting-group {
-        		margin-bottom: 70px;
+        		margin-bottom: 120px;
     	    	.head {
                     .main {
                         font-size: 21px;
                         display: block;
+                        color: #aaa;
                     }
                     .sub {
                         font-size: 12px;
@@ -89,10 +95,10 @@
                     width: 100px;
                     text-align: right;
                     color: #aaa;
-                    margin-left: -260px;
+                    // margin-left: -260px;
                     float: left;
                     display: inline-block;
-                    border-right: 1px #ccc dashed;
+                    // border-right: 1px #ccc dashed;
     	    	}
                 .contenteditable:empty:before {
                     content: "+ 在这里编辑个人简介";
@@ -131,6 +137,7 @@
     	    		margin-top: 20px;
     	    		color: #5b5b5b;
     	    		font-size: 16px;
+                    margin-left: 150px;
     		    	// float: left;
                     .social-list {
     		    		margin-bottom: 15px;
@@ -152,7 +159,7 @@
     	    			}
     	    			input {
     	    				margin-right: 5px;
-    	    				width: 147px;
+    	    				width: 132px;
     	    				float: left;
     	    			}
     	    		}
@@ -166,7 +173,7 @@
     .submit {
         color: #666;
         text-align: right;
-        width: 100px;
+        // width: 100px;
         float: right;
         font-size: 18px;
         margin-top: 50px;

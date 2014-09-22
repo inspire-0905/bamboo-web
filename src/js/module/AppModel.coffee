@@ -19,7 +19,7 @@ define [], () ->
 
         apiRequest: (type, method, define, data) ->
 
-            baseURL = 'http://api.inkpaper.io'
+            baseURL = 'http://localhost:3000'
 
             token = $.localStorage('token')
 
