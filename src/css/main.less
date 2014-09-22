@@ -7,7 +7,7 @@
 
 	.left {
         // background-color: #000;
-        opacity: 0.5;
+        // opacity: 0.5;
 		height: 200px;
 		// width: 250px;
 		height: 100%;
@@ -20,6 +20,9 @@
         border-right: 1px dashed #eee;
         display: flex;
         align-items: center;
+        &:hover {
+            opacity: 1;
+        }
 		.container {
             // position: absolute;
             padding: 60px 60px 60px 60px;
@@ -51,7 +54,7 @@
             	text-align: right;
             	margin-top: 50px;
             	.info-item {
-            		margin-top: 5px;
+            		margin-top: 10px;
             	}
             	.count {
             		font-size: 18px;
@@ -130,9 +133,20 @@
                     margin-right: 20px;
                     color: #333;
                     float: left;
+                    i {
+                        float: left;
+                        margin-top: 1px;
+                        margin-right: 7px;
+                    }
+                    .name {
+                        float: left;
+                    }
                     &.selected {
                         background-color: #333;
                         color: #fff;
+                        .count {
+                            opacity: 0.7;
+                        }
                     }
                     .icon-book-open {
                         display: block;
@@ -140,20 +154,14 @@
                         margin-top: 1px;
                         margin-right: 10px;
                     }
-                }
-            }
-            .publish {
-                padding: 5px 14px;
-                background-color: #333;
-                color: #fff;
-                border-radius: 3px;
-                border: 2px solid #666;
-                float: right;
-                .icon-book-open {
-                    display: block;
-                    float: left;
-                    margin-top: 1px;
-                    margin-right: 10px;
+                    .count {
+                        font-size: 12px;
+                        margin-left: 10px;
+                        margin-top: 3px;
+                        opacity: 0.3;
+                        float: right;
+                        display: none;
+                    }
                 }
             }
         }
@@ -165,9 +173,10 @@
         width: 664px;
         position: relative;
         .logo {
-            background: url(../img/logo_small.png);
-            width: 38px;
-            height: 38px;
+            background-image: url(../img/inkpaper.png);
+            background-size: cover;
+            width: 161px;
+            height: 109px;
             // float: right;
             margin: 0 auto;
             clear: both;
@@ -182,11 +191,96 @@
         .article-list {
             // display: none;
             margin-top: 0px;
+            margin-bottom: 120px;
             overflow: auto;
             .article-item {
                 // margin-top: 50px;
                 margin-bottom: 60px;
+                overflow-x: hidden;
                 // border-bottom: 1px dashed #ddd;
+                .info {
+                    position: absolute;
+                    margin-top: 57px;
+                    margin-bottom: 10px;
+                    margin-left: -100px;
+                    span {
+                        text-align: right;
+                        display: block;
+                        font-style: italic;
+                        color: #ccc;
+                    }
+                    label {
+                        font-size: 16px;
+                    }
+                    .num {
+                        font-size: 24px;
+                    }
+                    .status {
+                        display: block;
+                        margin-top: 5px;
+                        font-size: 14px;
+                    }
+                }
+                .tool {
+                    // display: none;
+                    transition-property: opacity;
+                    transition-duration: 0.1s;
+                    transition-timing-function: ease-out;
+                    position: absolute;
+                    margin-top: 40px;
+                    margin-bottom: 10px;
+                    opacity: 0;
+                    margin-left: -80px;
+                    // padding-left: 40px;
+                    li {
+                        font-size: 16px;
+                        color: #000;
+                        width: 35px;
+                        height: 35px;
+                        line-height: 39px;
+                        text-align: center;
+                        background-color: #fff;
+                        margin-bottom: 10px;
+                        border-radius: 35px;
+                        border: 1px solid #ddd;
+                        cursor: pointer;
+                        &:hover {
+                            color: #fff;
+                            background-color: #000;
+                        }
+                    }
+                }
+                // .checkbox {
+                //     font-size: 16px;
+                //     color: #000;
+                //     width: 35px;
+                //     height: 35px;
+                //     line-height: 39px;
+                //     text-align: center;
+                //     background-color: #fff;
+                //     margin-bottom: 10px;
+                //     border-radius: 35px;
+                //     border: 1px solid #ddd;
+                //     cursor: pointer;
+                //     span {
+                //         width: 20px;
+                //         height: 20px;
+                //         display: block;
+                //         border-radius: 20px;
+                //         margin: 0 auto;
+                //         margin-top: 8px;
+                //         background-color: #aaa;
+                //     }
+                //     &:hover {
+                //         color: #fff;
+                //         background-color: #000;
+                //     }
+                // }
+                &:hover {
+                    .tool {
+                        opacity: 1 !important;
+                    }
+                }
                 &:last-child {
                     border-bottom: 0;
                 }
@@ -198,12 +292,13 @@
                     width: 100%;
                     height: 250px;
                     display: inline-block;
-                    background-image: url(../img/thematic.jpg);
+                    background-image: url(../img/artwork_shinkai_makoto_the_garden_of_words_1920x1080_76228.jpg);
                     background-size: cover;
                     background-repeat: no-repeat;
-                    border-radius: 5px;
+                    border-radius: 7px;
+                    border: 1px solid #ddd;
                     .gradient {
-                        border-radius: 5px;
+                        border-radius: 7px;
                         width: 100%;
                         height: 100%;
                     }
@@ -276,14 +371,16 @@
         }
         .circle-list {
             margin-top: 60px;
-            display: none;
+            // display: none;
             // color: #333;
+            margin-bottom: 200px;
             .circle-item {
-                // width: 256px;
-                // height: 137px;
-                // background: url(../img/circle.png);
-                // float: left;
+                width: 100%;
+                /* float: left; */
                 cursor: pointer;
+                /* border-radius: 5px; */
+                /* margin-right: 90px; */
+                margin-bottom: 100px;
                 &:hover {
                     color: #777;
                 }
@@ -295,7 +392,7 @@
                     .icon {
                         float: left;
                         font-size: 22px;
-                        margin-right: 10px;
+                        margin-right: 15px;
                     }
                     .name {
                         font-size: 20px;
@@ -337,8 +434,9 @@
                         }
                     }
                     .description {
-                        margin-top: 7px;
+                        margin-top: 12px;
                         font-size: 14px;
+                        color: #aaa;
                     }
                 }
             }
