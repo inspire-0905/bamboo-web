@@ -106,7 +106,7 @@ if (typeof module === 'object') {
             allowMultiParagraphSelection: true,
             anchorInputPlaceholder: 'Paste or type a link',
             anchorPreviewHideDelay: 500,
-            buttons: ['bold', 'italic', 'underline', 'anchor', 'header1', 'header2', 'quote'],
+            buttons: ['bold', 'italic', 'anchor', 'quote', 'header1', 'header2', 'orderedlist', 'unorderedlist'],
             buttonLabels: false,
             checkLinkFormat: false,
             cleanPastedHTML: false,

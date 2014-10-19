@@ -381,7 +381,7 @@ var toMarkdown = function(string) {
     {
       patterns: ['b', 'strong'],
       replacement: function(str, attrs, innerHTML) {
-        return innerHTML ? '**' + innerHTML + '**' : '';
+        return innerHTML ? ' **' + innerHTML + '** ' : '';
       }
     },
     {

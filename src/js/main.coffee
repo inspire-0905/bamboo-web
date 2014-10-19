@@ -21,6 +21,9 @@ require.config
         handlebars:
             exports: 'Handlebars'
 
+        ace:
+            exports: 'ace'
+
         AppModel:
             deps: ['backbone']
 
@@ -38,6 +41,7 @@ require.config
         medium_editor: 'vender/medium-editor'
         html2canvas: 'vender/html2canvas'
         tomarkdown: 'vender/to-markdown'
+        ace: 'vender/ace'
 
         AppModel: 'module/AppModel'
         IndexView: 'module/index/IndexView'

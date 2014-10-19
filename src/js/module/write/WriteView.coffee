@@ -1,4 +1,4 @@
-define ['backbone', 'module/write/template'], (Backbone, template) ->
+define ['backbone', 'ace', 'module/write/template'], (Backbone, ace, template) ->
 
     WriteView = Backbone.View.extend
 
@@ -27,10 +27,24 @@ define ['backbone', 'module/write/template'], (Backbone, template) ->
             that = @
 
             @$el.html template()
+
             # editor = new Pen(@$el.find('.content.visual')[0])
-            editor = new MediumEditor('.content', {
+            editor = new MediumEditor('.content.visual', {
                 diffTop: -20
             })
+
+            # ace editor
+            aceEditor = ace.edit($('.content.markdown')[0])
+            MarkdownMode = ace.require('ace/mode/markdown').Mode
+            aceEditor.getSession().setMode(new MarkdownMode())
+            aceEditor.setOptions({
+                showGutter: false,
+                maxLines: Infinity,
+                highlightGutterLine: true,
+                showPrintMargin: false,
+                enableSnippets: false
+            })
+            aceEditor.getSession().setUseWrapMode(true)
 
             $(document).on 'mouseup', (event) ->
 
