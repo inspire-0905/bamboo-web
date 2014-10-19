@@ -345,6 +345,12 @@ var toMarkdown = function(string) {
 
   var ELEMENTS = [
     {
+      patterns: 'span',
+      replacement: function(str, attrs, innerHTML) {
+	    return str;
+      }
+    },
+	{
       patterns: 'p',
       replacement: function(str, attrs, innerHTML) {
         return innerHTML ? '\n\n' + innerHTML + '\n' : '';

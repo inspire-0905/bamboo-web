@@ -28,7 +28,7 @@ require.config
             deps: ['backbone']
 
         WriteView:
-            deps: ['medium_editor', 'html2canvas', 'tomarkdown']
+            deps: ['medium_editor', 'html2canvas', 'tomarkdown', 'markdown_converter']
 
     paths:
 
@@ -41,6 +41,7 @@ require.config
         medium_editor: 'vender/medium-editor'
         html2canvas: 'vender/html2canvas'
         tomarkdown: 'vender/to-markdown'
+        markdown_converter: 'vender/markdown'
         ace: 'vender/ace'
 
         AppModel: 'module/AppModel'

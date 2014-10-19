@@ -14,6 +14,9 @@ define ['backbone', 'ace', 'module/write/template'], (Backbone, ace, template) -
 
         initialize: () ->
 
+            # markdown converter
+            @markdownConverter = new Markdown.Converter()
+
         isInDomByClass: ($target, className) ->
 
             return $target[0].nodeName in ['INPUT', 'TEXTAREA'] or $target.hasClass(className) or $target.parents(".#{className}").length
@@ -29,9 +32,10 @@ define ['backbone', 'ace', 'module/write/template'], (Backbone, ace, template) -
             @$el.html template()
 
             # editor = new Pen(@$el.find('.content.visual')[0])
-            editor = new MediumEditor('.content.visual', {
+            mediumEditor = new MediumEditor('.content.visual', {
                 diffTop: -20
             })
+            @mediumEditor = mediumEditor
 
             # ace editor
             aceEditor = ace.edit($('.content.markdown')[0])
@@ -45,6 +49,7 @@ define ['backbone', 'ace', 'module/write/template'], (Backbone, ace, template) -
                 enableSnippets: false
             })
             aceEditor.getSession().setUseWrapMode(true)
+            @aceEditor = aceEditor
 
             $(document).on 'mouseup', (event) ->
 
@@ -52,7 +57,8 @@ define ['backbone', 'ace', 'module/write/template'], (Backbone, ace, template) -
                 if not (that.isInDomByClass($target, 'content') or
                     that.isInDomByClass($target, 'title') or
                     that.isInDomByClass($target, 'medium-editor-toolbar'))
-                        that.$el.find('.content').focusEnd()
+                        that.$el.find('.content.visual').focusEnd()
+                        that.aceEditor.focus()
 
             @initToolbar()
 
@@ -105,7 +111,7 @@ define ['backbone', 'ace', 'module/write/template'], (Backbone, ace, template) -
                         # set toolbar position
                         leftPos = that.$focusDom.offset().left
                         topPos = that.$focusDom.offset().top
-                        $toolbar.css('left', leftPos - 80 + 'px').css('top', topPos - 8 + 'px')
+                        $toolbar.css('left', leftPos - 80 + 'px').css('top', topPos - 10 + 'px')
                         $toolbar.fadeIn('fast')
 
                 else
@@ -156,10 +162,14 @@ define ['backbone', 'ace', 'module/write/template'], (Backbone, ace, template) -
 
             if $target.hasClass('visual')
                 @$el.find('.edit-view .visual').addClass('active')
+                @$el.find('.content.visual').focusEnd()
+                contentHtml = @markdownConverter.makeHtml(@aceEditor.getValue())
+                $visual.html(contentHtml)
                 $visual.show()
             else
                 @$el.find('.edit-view .markdown').addClass('active')
-                $markdown.val(toMarkdown($visual.html()))
+                @aceEditor.setValue(toMarkdown($visual.html()))
+                @aceEditor.clearSelection()
                 $markdown.show()
 
         write: () ->
