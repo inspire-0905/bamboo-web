@@ -21,10 +21,6 @@ define ['backbone', 'ace', 'module/write/template'], (Backbone, ace, template) -
 
             return $target[0].nodeName in ['INPUT', 'TEXTAREA'] or $target.hasClass(className) or $target.parents(".#{className}").length
 
-        toImg: (canvas) ->
-
-            $('#xxx')[0].src = canvas.toDataURL()
-
         render: () ->
 
             that = @
@@ -57,22 +53,28 @@ define ['backbone', 'ace', 'module/write/template'], (Backbone, ace, template) -
                 if not (that.isInDomByClass($target, 'content') or
                     that.isInDomByClass($target, 'title') or
                     that.isInDomByClass($target, 'medium-editor-toolbar'))
-                        that.$el.find('.content.visual').focusEnd()
                         that.aceEditor.focus()
+                        that.$el.find('.content.visual').focusEnd()
 
             @initToolbar()
 
             @$el
 
+        toImg: (canvas) ->
+
+            $('#xxx')[0].src = canvas.toDataURL()
+
         publish: () ->
 
             that = @
-            # html2canvas that.$el.find('.content'), {
-            #     onrendered: (canvas) ->
-            #         that.toImg(canvas)
-            #     useCORS: true
-            #     width: 700
-            # }
+            html2canvas that.$el.find('.content.visual'), {
+                letterRendering: true,
+                useCORS: true,
+                # width: 100,
+                # height: 1024,
+                onrendered: (canvas) ->
+                    that.toImg(canvas)
+            }
 
         selectImg: (event) ->
 

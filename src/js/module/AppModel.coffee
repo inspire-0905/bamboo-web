@@ -7,19 +7,16 @@ define [], () ->
         user:
 
             login: (data) ->
-                return AppModel.apiRequest('POST', '/auth/login', ['email', 'password'], data)
+                return AppModel.apiRequest('POST', '/login', ['mail', 'pass'], data)
 
             register: (data) ->
-                return AppModel.apiRequest('POST', '/auth/register', ['email', 'password', 'realname'], data)
-
-            feeds: (data) ->
-                return AppModel.apiRequest('GET', '/feeds', [], data)
+                return AppModel.apiRequest('POST', '/register', ['mail', 'pass'], data)
 
     , {
 
         apiRequest: (type, method, define, data) ->
 
-            baseURL = 'http://localhost:3000'
+            baseURL = 'http://localhost:9090'
 
             token = $.localStorage('token')
 
@@ -29,21 +26,21 @@ define [], () ->
                 url: "#{baseURL}#{method}"
                 dataType: 'json'
                 jsonp: false
-                data: _.pick(data or {}, define)
+                data: JSON.stringify(_.pick(data or {}, define))
                 crossDomain: true
-                headers: {Authorization: "Bearer #{token}"}
+                headers: {Token: "#{token}"}
 
             returnDeferred = $.Deferred()
 
-            deferred.done (result) ->
-                console.log(result)
-                if not result.code
-                    returnDeferred.resolve(result.data)
+            deferred.done (data) ->
+                console.log(data)
+                if data.status
+                    returnDeferred.resolve(data.result)
                 else
-                    returnDeferred.reject(result.data)
+                    returnDeferred.reject(data.result)
 
-            .fail (result) ->
-                console.log(result)
+            .fail (data) ->
+                console.log(data)
                 returnDeferred.reject('服务端或网络异常')
 
             .always () ->

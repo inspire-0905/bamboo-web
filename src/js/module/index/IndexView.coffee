@@ -41,10 +41,6 @@ define ['backbone', 'module/index/template', 'module/index/IndexModel'], (Backbo
                 $dom.tipsy('hide')
             , 2500
 
-        dealSuccess: (data) ->
-
-            $.localStorage('token', data.access_token)
-
         inputPress: (event) ->
 
             @submit() if event.keyCode is 13
@@ -86,10 +82,10 @@ define ['backbone', 'module/index/template', 'module/index/IndexModel'], (Backbo
             # invoke = @model.feeds
 
             invoke({
-                email: mail,
-                password: pass
+                mail: mail,
+                pass: pass
             }).done (data) ->
-                that.dealSuccess(data)
+                $.localStorage('token', data)
                 workspace.navigate('main', {trigger: true, replace: false})
             .fail (data) ->
                 that.showErrorTip($mail, data)
