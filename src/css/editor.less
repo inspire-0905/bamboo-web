@@ -103,7 +103,7 @@
 		}
 	}
 	.contenteditable.content:empty {
-		line-height: 23px;
+		line-height: 18px;
 		padding-top: 5px;
 		&:before {
 			content: "键入正文...";
@@ -134,22 +134,23 @@
 				display: block;
 			}
 		}
-		input.image-upload {
-			width: 50px;
-			position: absolute;
-			height: 50px;
-			left: 0;
-			background-color: #f00;
-			top: 0;
-			opacity: 0;
-			cursor: pointer;
-		}
 		.type-list {
 			display: none;
 			padding-top: 20px;
 			color: #000;
 			font-size: 16px;
 			.type {
+				input.image-upload {
+					opacity: 0;
+					width: 36px;
+					display: block;
+					height: 36px;
+					position: absolute;
+					top: -6px;
+					left: -11px;
+					// cursor: pointer;
+					z-index: 1;
+				}
 				&.image {
 					cursor: pointer;
 				}

@@ -1,4 +1,4 @@
-define ['backbone', 'module/index/template', 'module/index/IndexModel'], (Backbone, template, IndexModel) ->
+define ['backbone', 'module/index/template'], (Backbone, template) ->
 
     IndexView = Backbone.View.extend
 
@@ -9,10 +9,6 @@ define ['backbone', 'module/index/template', 'module/index/IndexModel'], (Backbo
             'click .submit': 'submit'
             'click .switch .btn': 'switch'
             'keypress .mail-input, .pass-input': 'inputPress'
-
-        initialize: () ->
-
-            @model = new IndexModel()
 
         render: (data) ->
 
@@ -77,7 +73,7 @@ define ['backbone', 'module/index/template', 'module/index/IndexModel'], (Backbo
 
             NProgress.start()
 
-            invoke = if @isRegisterState then @model.register else @model.login
+            invoke = if @isRegisterState then App.user.register else App.user.login
 
             # invoke = @model.feeds
 

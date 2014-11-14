@@ -9,7 +9,7 @@ define ['backbone', 'ace', 'module/write/template'], (Backbone, ace, template) -
             'click .write': 'write'
             'click img': 'selectImg'
             'mouseover li.type': 'focusToolbarInput'
-            'click .tool': 'publish'
+            'click .publish': 'publish'
             'click .edit-view li': 'modeSwitch'
 
         initialize: () ->
@@ -64,17 +64,33 @@ define ['backbone', 'ace', 'module/write/template'], (Backbone, ace, template) -
 
             $('#xxx')[0].src = canvas.toDataURL()
 
+        # publish: () ->
+        #
+        #     that = @
+        #     html2canvas that.$el.find('.content.visual'), {
+        #         letterRendering: true,
+        #         useCORS: true,
+        #         # width: 100,
+        #         # height: 1024,
+        #         onrendered: (canvas) ->
+        #             that.toImg(canvas)
+        #     }
+
         publish: () ->
 
-            that = @
-            html2canvas that.$el.find('.content.visual'), {
-                letterRendering: true,
-                useCORS: true,
-                # width: 100,
-                # height: 1024,
-                onrendered: (canvas) ->
-                    that.toImg(canvas)
-            }
+            originHTML = @$el.find('.content.visual').html()
+
+            title = @$el.find('.title').text()
+            content = toMarkdown(originHTML)
+
+            App.article.update({
+                id: 0,
+                title: title,
+                content: content
+            }).done (data) ->
+                alert(data)
+            .fail (data) ->
+                alert(data)
 
         selectImg: (event) ->
 
@@ -127,6 +143,11 @@ define ['backbone', 'ace', 'module/write/template'], (Backbone, ace, template) -
             # bind toolbar upload event
             $toolbar.dmUploader({
 
+                url: "#{App.baseURL}/article/upload",
+                dataType: 'json',
+                allowedTypes: 'image/*',
+                headers: {Token: $.localStorage('token')},
+
                 onNewFile: (id, file) ->
 
                     # show image preview
@@ -137,7 +158,7 @@ define ['backbone', 'ace', 'module/write/template'], (Backbone, ace, template) -
 
                         if that.$focusDom and that.$focusDom.length
 
-                            appendDom = '<img class="preview" />'
+                            appendDom = '<img class="preview" data-id="' + id + '" />'
 
                             if that.$focusDom.prop('tagName') isnt 'P'
                                 appendDom = "<p>#{appendDom}</p><p><br/></p>"
@@ -150,6 +171,15 @@ define ['backbone', 'ace', 'module/write/template'], (Backbone, ace, template) -
                                 that.$focusDom.html(appendDom)
 
                             that.$focusDom.find('.preview')[0].src = oFREvent.target.result
+
+                onUploadSuccess: (id, data) ->
+
+                    if data.status
+
+                        fileName = data.result
+                        $imgDom = $('img.preview[data-id="' + id + '"]')
+                        $imgDom[0].src = "#{App.baseURL}/#{fileName}"
+
             })
 
         modeSwitch: (event) ->

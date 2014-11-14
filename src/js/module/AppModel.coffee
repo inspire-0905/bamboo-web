@@ -4,26 +4,39 @@ define [], () ->
 
         initialize: () ->
 
+        baseURL: 'http://localhost:9090'
+
         user:
 
             login: (data) ->
-                return AppModel.apiRequest('POST', '/login', ['mail', 'pass'], data)
+                return AppModel.apiRequest('POST', '/user/login', ['mail', 'pass'], data)
 
             register: (data) ->
-                return AppModel.apiRequest('POST', '/register', ['mail', 'pass'], data)
+                return AppModel.apiRequest('POST', '/user/register', ['mail', 'pass'], data)
+
+        article:
+
+            update: (data) ->
+                return AppModel.apiRequest('POST', '/article/update', ['id', 'title', 'content'], data)
+
+            list: () ->
+                return AppModel.apiRequest('POST', '/article/list', [])
+
+            get: () ->
+                return AppModel.apiRequest('POST', '/article/get', ['id'])
 
     , {
 
         apiRequest: (type, method, define, data) ->
 
-            baseURL = 'http://localhost:9090'
+
 
             token = $.localStorage('token')
 
             deferred = $.ajax
 
                 type: type
-                url: "#{baseURL}#{method}"
+                url: "#{App.baseURL}#{method}"
                 dataType: 'json'
                 jsonp: false
                 data: JSON.stringify(_.pick(data or {}, define))

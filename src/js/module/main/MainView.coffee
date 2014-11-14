@@ -13,6 +13,11 @@ define ['backbone', 'module/main/template'], (Backbone, template) ->
         render: () ->
 
             @$el.html template()
+            App.article.list().done (data) ->
+                alert(JSON.stringify(data))
+            .fail (data) ->
+                alert(data)
+            @$el
 
         write: () ->
 
