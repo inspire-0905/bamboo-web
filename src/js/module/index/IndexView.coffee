@@ -13,7 +13,7 @@ define ['backbone', 'module/index/template'], (Backbone, template) ->
         render: (data) ->
 
             that = @
-            @$el.html template()
+            @$el.html template.page()
 
             if data is 'login'
                 @switch('login')

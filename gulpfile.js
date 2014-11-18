@@ -6,16 +6,34 @@ var path = require('path'),
     coffee = require('gulp-coffee'),
     less = require('gulp-less'),
     defineModule = require('gulp-define-module'),
-    handlebars = require('gulp-handlebars'),
+    handlebars = require('handlebars'),
     modRewrite = require('connect-modrewrite');
 
 var compile = function(file) {
     var compileFunc = function(file, method, outpath) {
         if (method === 'template') {
             gulp.src(file)
-                .pipe(handlebars())
+                // .pipe(handlebars())
                 .pipe(defineModule('plain', {
-                    wrapper: 'define([], function() {return <%= handlebars %>});'
+                    wrapper: 'define([], function() {return <%= handlebars %>});',
+                    context: function(context) {
+                        try {
+                            var tplStr = '{';
+                            var retAry = context.contents.split(/(<!-- \w+ -->)/ig);
+                            for (var i = 1; i < retAry.length; i += 2) {
+                                var name = retAry[i].match(/\w+/)[0];
+                                var tpl = handlebars.precompile(retAry[i + 1]).toString();
+                                tplStr += '"' + name + '":' + 'Handlebars.template(' + tpl + ')';
+                                if ((i + 1) != retAry.length) {
+                                    tplStr += ',\n';
+                                }
+                            }
+                            tplStr += '}';
+                        } catch(err) {
+                            console.log(err);
+                        }
+                        return {handlebars: tplStr};
+                    }
                 }))
                 .pipe(gulp.dest(outpath));
         } else {

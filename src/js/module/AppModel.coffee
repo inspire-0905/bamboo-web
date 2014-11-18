@@ -29,8 +29,6 @@ define [], () ->
 
         apiRequest: (type, method, define, data) ->
 
-
-
             token = $.localStorage('token')
 
             deferred = $.ajax
@@ -50,6 +48,7 @@ define [], () ->
                 if data.status
                     returnDeferred.resolve(data.result)
                 else
+                    alert(data.result)
                     returnDeferred.reject(data.result)
 
             .fail (data) ->

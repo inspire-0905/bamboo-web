@@ -12,6 +12,8 @@ define ['backbone', 'ace', 'module/write/template'], (Backbone, ace, template) -
             'click .publish': 'publish'
             'click .edit-view li': 'modeSwitch'
 
+        articleId: ''
+
         initialize: () ->
 
             # markdown converter
@@ -25,7 +27,7 @@ define ['backbone', 'ace', 'module/write/template'], (Backbone, ace, template) -
 
             that = @
 
-            @$el.html template()
+            @$el.html template.page()
 
             # editor = new Pen(@$el.find('.content.visual')[0])
             mediumEditor = new MediumEditor('.content.visual', {
@@ -78,17 +80,19 @@ define ['backbone', 'ace', 'module/write/template'], (Backbone, ace, template) -
 
         publish: () ->
 
+            that = @
+
             originHTML = @$el.find('.content.visual').html()
 
             title = @$el.find('.title').text()
             content = toMarkdown(originHTML)
 
             App.article.update({
-                id: 0,
+                id: that.articleId,
                 title: title,
                 content: content
             }).done (data) ->
-                alert(data)
+                that.articleId = data
             .fail (data) ->
                 alert(data)
 

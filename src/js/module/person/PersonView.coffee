@@ -6,7 +6,7 @@ define ['backbone', 'module/person/template'], (Backbone, template) ->
         events: {}
         initialize: () ->
         render: () ->
-            @$el.html template()
+            @$el.html template.page()
             initUploaders('http://api.inkpaper.io/upload')
             @$el
 

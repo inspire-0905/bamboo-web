@@ -10,6 +10,6 @@ define ['backbone', 'module/article/template'], (Backbone, template) ->
 
         render: () ->
 
-            @$el.html template()
+            @$el.html template.page()
 
     return ArticleView

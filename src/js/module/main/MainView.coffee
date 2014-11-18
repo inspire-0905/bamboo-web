@@ -12,11 +12,11 @@ define ['backbone', 'module/main/template'], (Backbone, template) ->
 
         render: () ->
 
-            @$el.html template()
+            that = @
             App.article.list().done (data) ->
-                alert(JSON.stringify(data))
+                that.$el.html template.page()
             .fail (data) ->
-                alert(data)
+                null
             @$el
 
         write: () ->
