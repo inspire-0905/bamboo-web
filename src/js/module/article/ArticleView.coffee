@@ -8,8 +8,9 @@ define ['backbone', 'module/article/template'], (Backbone, template) ->
 
         initialize: () ->
 
-        render: () ->
+        render: (id) ->
 
+            alert(id)
             @$el.html template.page()
 
     return ArticleView

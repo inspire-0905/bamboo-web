@@ -64,7 +64,7 @@ require ['backbone', 'handlebars', 'AppModel'], (Backbone, Handlebars, AppModel)
             'main': 'main'
             'person': 'person'
             'write': 'write'
-            'article': 'article'
+            'article/:id': 'article'
 
         reset: () ->
 
@@ -111,9 +111,9 @@ require ['backbone', 'handlebars', 'AppModel'], (Backbone, Handlebars, AppModel)
 
             @render('WriteView')
 
-        article: () ->
+        article: (id) ->
 
-            @render('ArticleView')
+            @render('ArticleView', id)
 
     window.workspace = new Workspace()
     window.App = new AppModel()

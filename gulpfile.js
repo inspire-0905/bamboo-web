@@ -77,7 +77,10 @@ gulp.task('connect', function() {
         middleware: function() {
             return [
                 modRewrite([
-                    '^/[A-Za-z]+$ /index.html'
+                    '^(/article)?/css/(.*)$ /css/$2 [L]',
+                    '^(/article)?/js/(.*)$ /js/$2 [L]',
+                    '^(/article)?/img/(.*)$ /img/$2 [L]',
+                    '.* /index.html'
                 ])
             ]
         }
