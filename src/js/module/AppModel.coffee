@@ -25,8 +25,8 @@ define [], () ->
             remove: (data) ->
                 return AppModel.apiRequest('POST', '/article/remove', ['id'], data)
 
-            get: () ->
-                return AppModel.apiRequest('POST', '/article/get', ['id'])
+            get: (data) ->
+                return AppModel.apiRequest('POST', '/article/get', ['id'], data)
 
     , {
 

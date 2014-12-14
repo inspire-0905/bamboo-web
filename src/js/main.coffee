@@ -111,9 +111,9 @@ require ['backbone', 'handlebars', 'AppModel'], (Backbone, Handlebars, AppModel)
 
             @render('WriteView')
 
-        article: (id) ->
+        article: (articleId) ->
 
-            @render('ArticleView', id)
+            @render('ArticleView', articleId)
 
     window.workspace = new Workspace()
     window.App = new AppModel()

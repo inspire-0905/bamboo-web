@@ -8,9 +8,15 @@ define ['backbone', 'module/article/template'], (Backbone, template) ->
 
         initialize: () ->
 
-        render: (id) ->
+        render: (articleId) ->
 
-            alert(id)
-            @$el.html template.page()
+            that = @
+            App.article.get({
+                id: articleId
+            }).done (data) ->
+                that.$el.html template.page(data)
+            .fail (data) ->
+                null
+            @$el
 
     return ArticleView
