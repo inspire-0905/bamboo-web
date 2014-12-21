@@ -16,9 +16,6 @@ define ['backbone', 'ace', 'module/write/template'], (Backbone, ace, template) -
 
         initialize: () ->
 
-            # markdown converter
-            @markdownConverter = new Markdown.Converter()
-
         isInDomByClass: ($target, className) ->
 
             return $target[0].nodeName in ['INPUT', 'TEXTAREA'] or $target.hasClass(className) or $target.parents(".#{className}").length
@@ -86,6 +83,10 @@ define ['backbone', 'ace', 'module/write/template'], (Backbone, ace, template) -
 
             title = @$el.find('.title').text()
             content = toMarkdown(originHTML)
+
+            if $.trim(title) is ''
+                App.notify('请输入文章标题')
+                return
 
             App.article.update({
                 id: that.articleId,
@@ -199,7 +200,7 @@ define ['backbone', 'ace', 'module/write/template'], (Backbone, ace, template) -
             if $target.hasClass('visual')
                 @$el.find('.edit-view .visual').addClass('active')
                 @$el.find('.content.visual').focusEnd()
-                contentHtml = @markdownConverter.makeHtml(@aceEditor.getValue())
+                contentHtml = App.mdConvert.makeHtml(@aceEditor.getValue())
                 $visual.html(contentHtml)
                 $visual.show()
             else

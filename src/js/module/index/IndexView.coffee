@@ -81,7 +81,12 @@ define ['backbone', 'module/index/template'], (Backbone, template) ->
                 mail: mail,
                 pass: pass
             }).done (data) ->
-                $.localStorage('token', data)
+                $.localStorage('token', data.token)
+                $.localStorage('avatar', data.avatar)
+                $.localStorage('link', data.link)
+                $.localStorage('mail', data.mail)
+                $.localStorage('motto', data.motto)
+                $.localStorage('nick', data.nick)
                 workspace.navigate('main', {trigger: true, replace: false})
             .fail (data) ->
                 that.showErrorTip($mail, data)

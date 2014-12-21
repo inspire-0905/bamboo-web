@@ -25,10 +25,10 @@ require.config
             exports: 'ace'
 
         AppModel:
-            deps: ['backbone']
+            deps: ['backbone', 'markdown_converter']
 
         WriteView:
-            deps: ['medium_editor', 'html2canvas', 'tomarkdown', 'markdown_converter']
+            deps: ['medium_editor', 'html2canvas', 'tomarkdown']
 
     paths:
 
@@ -47,7 +47,7 @@ require.config
         AppModel: 'module/AppModel'
         IndexView: 'module/index/IndexView'
         MainView: 'module/main/MainView'
-        PersonView: 'module/person/PersonView'
+        SettingView: 'module/setting/SettingView'
         WriteView: 'module/write/WriteView'
         ArticleView: 'module/article/ArticleView'
 
@@ -62,7 +62,7 @@ require ['backbone', 'handlebars', 'AppModel'], (Backbone, Handlebars, AppModel)
             'login': 'login'
             'register': 'register'
             'main': 'main'
-            'person': 'person'
+            'setting': 'setting'
             'write': 'write'
             'article/:id': 'article'
 
@@ -103,9 +103,9 @@ require ['backbone', 'handlebars', 'AppModel'], (Backbone, Handlebars, AppModel)
 
             @render('MainView')
 
-        person: () ->
+        setting: () ->
 
-            @render('PersonView')
+            @render('MainView', 'setting')
 
         write: () ->
 

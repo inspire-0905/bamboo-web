@@ -4,7 +4,6 @@
     margin: 0 auto;
     // max-width: 900px;
 
-
 	.left {
         // background-color: #000;
         // opacity: 0.5;
@@ -102,9 +101,6 @@
 		}
 	}
 
-
-
-
     .toolbar {
         padding: 30px;
         position: absolute;
@@ -116,52 +112,59 @@
             background: url(../img/avatar.png) no-repeat;
         }
     }
-    .right {
 
+    .right {
         .tool {
             font-size: 18px;
             display: inline-block;
             margin-bottom: 80px;
             width: 100%;
-            .type {
-                // float: left;
-                margin-top: 10px;
-                margin-right: 60px;
-                font-size: 16px;
-                .item {
-                    padding: 5px 15px;
-                    margin-right: 15px;
-                    color: #333;
+            // float: left;
+            margin-top: 10px;
+            margin-right: 60px;
+            font-size: 16px;
+            .item {
+                padding: 5px 15px;
+                margin-right: 15px;
+                color: #333;
+                float: left;
+                cursor: pointer;
+                i {
                     float: left;
-                    i {
-                        float: left;
-                        margin-top: 1px;
-                        margin-right: 7px;
-                    }
-                    .name {
-                        float: left;
-                    }
-                    &.selected {
-                        background-color: #333;
-                        color: #fff;
-                        .count {
-                            opacity: 0.7;
-                        }
-                    }
-                    .icon-book-open {
-                        display: block;
-                        float: left;
-                        margin-top: 1px;
-                        margin-right: 10px;
-                    }
+                    margin-top: 1px;
+                    margin-right: 7px;
+                }
+                .name {
+                    float: left;
+                }
+                &.selected {
+                    background-color: #333;
+                    color: #fff;
                     .count {
-                        font-size: 12px;
-                        margin-left: 10px;
-                        margin-top: 3px;
-                        opacity: 0.3;
-                        float: right;
-                        display: none;
+                        opacity: 0.7;
                     }
+                }
+                &[data-id="setting"] {
+                    float: right;
+                    margin-right: 0;
+                }
+                &[data-id="circle"] {
+                    float: right;
+                    // margin-right: 0;
+                }
+                .icon-book-open {
+                    display: block;
+                    float: left;
+                    margin-top: 1px;
+                    margin-right: 10px;
+                }
+                .count {
+                    font-size: 12px;
+                    margin-left: 10px;
+                    margin-top: 3px;
+                    opacity: 0.5;
+                    float: right;
+                    display: none;
                 }
             }
         }
@@ -173,6 +176,9 @@
         width: 664px;
         position: relative;
         .logo {
+            transition-property: opacity;
+            transition-duration: 1s;
+            transition-timing-function: ease-out;
             background-image: url(../img/inkpaper.png);
             background-size: cover;
             width: 161px;
@@ -194,9 +200,16 @@
             margin-bottom: 120px;
             overflow: auto;
             .article-item {
+                transition-property: opacity;
+                transition-duration: 0.2s;
+                transition-timing-function: ease-out;
                 // margin-top: 50px;
                 margin-bottom: 60px;
                 overflow-x: hidden;
+                cursor: pointer;
+                &:hover {
+                    opacity: 0.8;
+                }
                 // border-bottom: 1px dashed #ddd;
                 .info {
                     position: absolute;
@@ -223,9 +236,9 @@
                 }
                 .tool {
                     // display: none;
-                    transition-property: opacity;
-                    transition-duration: 0.1s;
-                    transition-timing-function: ease-out;
+                    // transition-property: opacity;
+                    // transition-duration: 0.1s;
+                    // transition-timing-function: ease-out;
                     position: absolute;
                     margin-top: 40px;
                     margin-bottom: 10px;
@@ -291,12 +304,13 @@
                     color: #fff;
                     width: 100%;
                     height: 250px;
-                    display: inline-block;
-                    background-image: url(../img/artwork_shinkai_makoto_the_garden_of_words_1920x1080_76228.jpg);
+                    // display: inline-block;
+                    // background-image: url(../img/artwork_shinkai_makoto_the_garden_of_words_1920x1080_76228.jpg);
                     background-size: cover;
+                    background-position: center;
                     background-repeat: no-repeat;
-                    border-radius: 7px;
-                    border: 1px solid #ddd;
+                    border-radius: 6px;
+                    // border: 1px solid #ddd;
                     .gradient {
                         border-radius: 7px;
                         width: 100%;
@@ -314,10 +328,10 @@
                     letter-spacing: 0.5px;
                     line-height: 26px;
                     font-size: 14px;
-                    padding: 15px 0 10px 0;
+                    padding: 15px 0 60px 0;
                     padding-top: 0;
                     color: #777;
-                    height: 48px;
+                    height: 20px;
                     text-overflow: ellipsis;
                     overflow: hidden;
                     // text-indent: 30px;
@@ -328,6 +342,7 @@
                     width: 100%;
                     display: inline-block;
                     margin: 0;
+                    margin-top: 10px;
                     margin-bottom: 20px;
                     color: #333;
                     font-size: 14px;

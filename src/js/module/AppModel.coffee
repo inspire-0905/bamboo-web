@@ -4,6 +4,14 @@ define [], () ->
 
         initialize: () ->
 
+        # markdown converter
+        mdConvert: new Markdown.Converter()
+
+        notify: (info) ->
+
+            $notify = $('#notify')
+            $notify.text(info).css('margin-left', -($notify.width() / 2) - 27).addClass('show')
+
         baseURL: 'http://localhost:9090'
 
         user:

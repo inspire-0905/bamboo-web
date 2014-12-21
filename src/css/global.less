@@ -67,6 +67,12 @@ ul {
     filter: blur(2px);
 }
 
+.animate {
+    transition-property: opacity;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-out;
+}
+
 .clear {
     clear: both;
 }
@@ -100,6 +106,28 @@ input {
             font-style: italic;
             cursor: text;
         }
+    }
+}
+
+#notify {
+    .animate;
+    position: fixed;
+    // height: 50px;
+    // width: 100%;
+    color: #fff;
+    padding: 5px 30px;
+    background-color: #000;
+    left: 50%;
+    // margin-left: -100px;
+    display: none;
+    opacity: 0;
+    top: 30px;
+    text-align: center;
+    border: 1px #333 solid;
+    border-radius: 4px;
+    &.show {
+        display: block;
+        opacity: 1;
     }
 }
 
