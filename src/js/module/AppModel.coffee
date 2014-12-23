@@ -10,7 +10,11 @@ define [], () ->
         notify: (info) ->
 
             $notify = $('#notify')
+            clearTimeout(@notifyTimer) if @notifyTimer
             $notify.text(info).css('margin-left', -($notify.width() / 2) - 27).addClass('show')
+            @notifyTimer = setTimeout () ->
+                $notify.removeClass('show')
+            , 2000
 
         baseURL: 'http://localhost:9090'
 
@@ -21,6 +25,9 @@ define [], () ->
 
             register: (data) ->
                 return AppModel.apiRequest('POST', '/user/register', ['mail', 'pass'], data)
+
+            config: (data) ->
+                return AppModel.apiRequest('POST', '/user/config', ['key', 'value'], data)
 
         article:
 
@@ -59,7 +66,7 @@ define [], () ->
                 if data.status
                     returnDeferred.resolve(data.result)
                 else
-                    alert(data.result)
+                    App.notify(data.result)
                     returnDeferred.reject(data.result)
 
             .fail (data) ->

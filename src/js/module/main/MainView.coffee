@@ -28,7 +28,13 @@ define ['backbone', 'module/main/template', 'SettingView'], (Backbone, template,
 
             that = @
 
-            that.$el.html template.page()
+            that.$el.html template.page({
+                mail: $.localStorage('mail'),
+                nick: $.localStorage('nick'),
+                motto: $.localStorage('motto'),
+                link: $.localStorage('link'),
+                avatar: $.localStorage('avatar')
+            })
 
             if data is 'setting'
                 @switchTo('setting')
@@ -50,7 +56,9 @@ define ['backbone', 'module/main/template', 'SettingView'], (Backbone, template,
 
             if name is 'setting'
 
-                that.$el.find('.main').html (new SettingView()).render()
+                $parent = that.$el.find('.main')
+                settingView = new SettingView()
+                $parent.html settingView.render()
 
             else
 

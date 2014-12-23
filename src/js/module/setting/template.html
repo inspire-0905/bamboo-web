@@ -8,8 +8,8 @@
         </div>
         <div class="content content-padding">
             <div class="input-wrap">
-                <input placeholder="填写电子邮箱地址" value="{{mail}}" />
-                <div class="confirm">确认</div>
+                <input id="mail" placeholder="填写电子邮箱地址" value="{{mail}}" />
+                <div id="mail_confirm" class="confirm">确认</div>
             </div>
         </div>
     </div>
@@ -19,14 +19,13 @@
             <span class="sub">BASIC</span>
         </div>
         <div class="content content-padding">
-            <div class="filedrag avatar">
-                <div class="filedrag-droparea"><img class="filedrag-preview" src="/img/avatar.png"></div>
-                <div class="filedrag-progress"></div>
-                <input type="file" class="filedrag-input" name="file-input" />
+            <div class="avatar">
+                <input id="avatar" type="file" multiple="multiple">
+                <img class="preview" src="{{avatar}}" />
             </div>
             <!-- <div class="avatar"></div> -->
             <div class="info">
-                <div class="nick">简时文书</div>
+                <input id="nick" class="nick" placeholder="昵称" value="{{nick}}" />
                 <!-- <div class="motto contenteditable" contenteditable></div> -->
             </div>
         </div>
@@ -36,7 +35,7 @@
             <span class="main">个人简序</span>
             <span class="sub">PERSON</span>
         </div>
-        <div class="content preface contenteditable" contenteditable>{{motto}}</div>
+        <textarea id="motto" class="content motto" placeholder="+ 编辑个人简介">{{motto}}</textarea>
     </div>
     <div class="setting-group">
         <div class="head">
@@ -60,8 +59,8 @@
                 <span class="type">Pixiv</span>
             </div> -->
             <div class="input-wrap">
-                <input placeholder="个人网站 / 微博 / 豆瓣 / 知乎 / Github / Dribbble / Pixiv" value="{{link}}" />
-                <div class="confirm">确认</div>
+                <input id="link" placeholder="个人网站 / 微博 / 豆瓣 / 知乎 / Github / Dribbble / Pixiv" value="{{link}}" />
+                <div id="link_confirm" class="confirm">确认</div>
             </div>
         </div>
     </div>
@@ -72,10 +71,10 @@
         </div>
         <div class="content content-padding">
             <div class="input-wrap password">
-                <span class="input-split">/</span><input type="password" placeholder="当前密码" />
-                <span class="input-split">/</span><input type="password" placeholder="新密码" />
-                <span class="input-split">/</span><input type="password" placeholder="新密码确认" />
-                <div class="confirm">确认</div>
+                <span class="input-split">/</span><input id="cur_pass" type="password" placeholder="当前密码" />
+                <span class="input-split">/</span><input id="new_pass" type="password" placeholder="新密码" />
+                <span class="input-split">/</span><input id="rep_pass" type="password" placeholder="新密码确认" />
+                <div id="pass_confirm" class="confirm">确认</div>
             </div>
         </div>
     </div>

@@ -47,6 +47,20 @@
     }
     input[type="file"] {
         opacity: 0;
+        width: 70px;
+        height: 70px;
+        z-index: 1;
+        position: absolute;
+        cursor: pointer;
+    }
+    img.preview {
+        width: 70px;
+        height: 70px;
+        border: 0;
+        border-radius: 67px;
+        float: left;
+        border: 1px #eee solid;
+        cursor: pointer;
     }
     .page-setting {
     	color: #393939;
@@ -74,20 +88,11 @@
                 display: inline-block;
                 // border-right: 1px #ccc dashed;
 	    	}
-            .contenteditable:empty:before {
-                content: "+ 编辑个人简介";
-            }
-            .avatar, .filedrag-preview {
-                width: 67px;
-                height: 67px;
-                border-radius: 67px;
-                float: left;
-                border: 1px #eee solid;
-                cursor: pointer;
-                // background: url(../img/avatar.png) no-repeat;
-                &:hover {
-                    opacity: 0.9;
-                }
+            .content.motto {
+                border: 0;
+                margin-left: 36px;
+                margin-top: 0px;
+                resize: none;
             }
             .info {
                 margin-top: 26px;
@@ -97,6 +102,8 @@
                     font-weight: bold;
                     font-size: 24px;
                     color: #666;
+                    border: 0;
+                    width: 300px;
                 }
                 .motto {
                     margin-top: 2px;

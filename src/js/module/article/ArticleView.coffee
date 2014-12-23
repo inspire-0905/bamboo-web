@@ -10,18 +10,19 @@ define ['backbone', 'module/article/template'], (Backbone, template) ->
 
         render: (articleId) ->
 
-
-
             that = @
             NProgress.start()
+
             App.article.get({
                 id: articleId
             }).done (data) ->
                 data.content = App.mdConvert.makeHtml(data.content)
                 that.$el.html template.page(data)
-                NProgress.done()
             .fail (data) ->
                 null
+            .always () ->
+                NProgress.done()
+
             @$el
 
     return ArticleView
