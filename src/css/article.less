@@ -1,9 +1,54 @@
 // article page
 
 #article, #write {
+	width: 664px;
+	margin: 0 auto;
+	.meta {
+		margin-bottom: 350px;
+		.author {
+			float: left;
+			.avatar {
+				width: 67px;
+				height: 67px;
+				border-radius: 67px;
+				border: 1px #eee solid;
+				cursor: pointer;
+				float: left;
+			}
+			.author-info {
+				float: left;
+				margin-top: 15px;
+				margin-left: 20px;
+				.nick {
+					font-size: 18px;
+					font-weight: bold;
+					color: #555;
+				}
+				.motto {
+					margin-top: 5px;
+					color: #aaa;
+					// width: 100%;
+					// text-align: right;
+					line-height: 22px;
+					// display: inline-block;
+					font-size: 14px;
+				}
+			}
+		}
+		.tool {
+			float: right;
+			font-size: 26px;
+			margin-top: 30px;
+			.icon {
+				color: #aaa;
+				cursor: pointer;
+				&:hover {
+					color: #000;
+				}
+			}
+		}
+	}
 	.article {
-		width: 664px;
-		margin: 0 auto;
 		padding-top: 110px;
 		.author {
 		    position: absolute;
@@ -12,10 +57,10 @@
 		    border-right: 1px #bbb dashed;
 		    padding: 10px 20px 10px 0;
 			.avatar {
-			    width: 67px;
-			    height: 67px;
-			    border-radius: 67px;
-			    background: url(../img/avatar.png) no-repeat;
+			    width: 70px;
+			    height: 70px;
+			    border-radius: 70px;
+			    // background: url(../img/avatar.png) no-repeat;
 			    border: 1px #eee solid;
 			    cursor: pointer;
 			    float: right;
@@ -63,24 +108,6 @@
 			padding-left: 15px;
 			line-height: 22px;
 		}
-		.meta {
-			.info {
-				margin-left: 20px;
-				margin-top: 14px;
-				float: left;
-				font-size: 18px;
-				.title {
-					margin-top: 4px;
-					color: #959595;
-					font-size: 14px;
-				}
-			}
-			.tool {
-				float: right;
-				font-size: 26px;
-				margin-top: 18px;
-			}
-		}
 		.content {
 			font-family: Menlo,"Ubuntu Mono",Consolas,"Courier New",Microsoft Yahei,Hiragino Sans GB,WenQuanYi Micro Hei,sans-serif;
 			font-size: 16px;
@@ -126,13 +153,34 @@
 		text-align: center;
 		color: #bbbbbb;
 		font-style: italic;
-		.item {
-			margin-right: 2px;
+		.selectize-control {
+			.selectize-input > div {
+				background: #fff !important;
+				color: #aaa !important;
+				border: 1px solid #eee !important;
+				border-radius: 3px !important;
+			}
 		}
-		.icon-book-open {
-			margin-right: 8px;
-			font-size: 16px;
-			margin-top: 10px;
+		.circle-select {
+			margin: 0 auto;
+			// margin-right: 2px;
+			width: 200px;
+
+			.selectize-input {
+				border: 0;
+				box-shadow: none;
+				input:before {
+					border: 0;
+					box-shadow: none;
+				}
+			}
+			.selectize-dropdown {
+				border: 1px #eee solid;
+				box-shadow: none;
+				// background-color: transparent;
+				.selectize-content {
+				}
+			}
 		}
 	}
 	.info.fin {

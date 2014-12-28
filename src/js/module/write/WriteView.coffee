@@ -26,6 +26,28 @@ define ['backbone', 'ace', 'module/write/template'], (Backbone, ace, template) -
 
             @$el.html template.page()
 
+            # init circle select
+            @$el.find('.circle-select').selectize({
+                persist: false,
+                maxItems: null,
+                valueField: 'name',
+                labelField: 'name',
+                searchField: ['name', 'name'],
+                options: [
+                    {name: '电影'},
+                    {name: '音乐'},
+                    {name: '动漫'},
+                    {name: '摄影'},
+                    {name: '旅行'}
+                ],
+                render: {
+                    item: (item, escape) ->
+                        return '<div>' + item.name + '</div>'
+                    option: (item, escape) ->
+                        return '<div>' + item.name + '</div>'
+                }
+            })
+
             # editor = new Pen(@$el.find('.content.visual')[0])
             mediumEditor = new MediumEditor('.content.visual', {
                 diffTop: -20
@@ -89,11 +111,12 @@ define ['backbone', 'ace', 'module/write/template'], (Backbone, ace, template) -
                 return
 
             App.article.update({
-                id: that.articleId,
+                articleId: that.articleId,
                 title: title,
                 content: content
             }).done (data) ->
                 that.articleId = data
+                workspace.navigate('main', {trigger: true})
             .fail (data) ->
                 alert(data)
 

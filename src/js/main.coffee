@@ -28,7 +28,7 @@ require.config
             deps: ['backbone', 'markdown_converter']
 
         WriteView:
-            deps: ['medium_editor', 'html2canvas', 'tomarkdown']
+            deps: ['medium_editor', 'html2canvas', 'tomarkdown', 'selectize']
 
     paths:
 
@@ -43,6 +43,7 @@ require.config
         tomarkdown: 'vender/to-markdown'
         markdown_converter: 'vender/markdown'
         ace: 'vender/ace'
+        selectize: 'vender/selectize/selectize.min'
 
         AppModel: 'module/AppModel'
         IndexView: 'module/index/IndexView'

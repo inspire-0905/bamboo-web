@@ -32,16 +32,22 @@ define [], () ->
         article:
 
             update: (data) ->
-                return AppModel.apiRequest('POST', '/article/update', ['id', 'title', 'content'], data)
+                return AppModel.apiRequest('POST', '/article/update', ['articleId', 'title', 'content'], data)
 
             list: () ->
                 return AppModel.apiRequest('POST', '/article/list', [])
 
             remove: (data) ->
-                return AppModel.apiRequest('POST', '/article/remove', ['id'], data)
+                return AppModel.apiRequest('POST', '/article/remove', ['articleId'], data)
 
             get: (data) ->
-                return AppModel.apiRequest('POST', '/article/get', ['id'], data)
+                return AppModel.apiRequest('POST', '/article/get', ['articleId'], data)
+
+            like: (data) ->
+                return AppModel.apiRequest('POST', '/article/like', ['articleId', 'like'], data)
+
+            favarite: (data) ->
+                return AppModel.apiRequest('POST', '/article/favarite', ['articleId', 'favarite'], data)
 
     , {
 

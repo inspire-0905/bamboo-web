@@ -29,6 +29,7 @@ define ['backbone', 'module/main/template', 'SettingView'], (Backbone, template,
             that = @
 
             that.$el.html template.page({
+                id: $.localStorage('id'),
                 mail: $.localStorage('mail'),
                 nick: $.localStorage('nick'),
                 motto: $.localStorage('motto'),
@@ -89,7 +90,7 @@ define ['backbone', 'module/main/template', 'SettingView'], (Backbone, template,
             $articleItem = $(event.currentTarget).parents('.article-item')
             articleId = $articleItem.data('id')
             App.article.remove({
-                id: articleId
+                articleId: articleId
             }).done (data) ->
                 $articleItem.remove()
             .fail (data) ->
