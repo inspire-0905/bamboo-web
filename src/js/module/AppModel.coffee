@@ -32,7 +32,7 @@ define [], () ->
         article:
 
             update: (data) ->
-                return AppModel.apiRequest('POST', '/article/update', ['articleId', 'title', 'content'], data)
+                return AppModel.apiRequest('POST', '/article/update', ['articleId', 'title', 'content', 'circles'], data)
 
             list: () ->
                 return AppModel.apiRequest('POST', '/article/list', [])

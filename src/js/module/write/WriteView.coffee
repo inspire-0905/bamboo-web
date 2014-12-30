@@ -110,15 +110,16 @@ define ['backbone', 'ace', 'module/write/template'], (Backbone, ace, template) -
                 App.notify('请输入文章标题')
                 return
 
+            circles = that.$el.find('input.circle-select').val().split(',')
+
             App.article.update({
                 articleId: that.articleId,
                 title: title,
-                content: content
+                content: content,
+                circles: circles,
             }).done (data) ->
                 that.articleId = data
                 workspace.navigate('main', {trigger: true})
-            .fail (data) ->
-                alert(data)
 
         selectImg: (event) ->
 

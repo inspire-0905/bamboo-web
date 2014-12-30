@@ -51,6 +51,7 @@ require.config
         SettingView: 'module/setting/SettingView'
         WriteView: 'module/write/WriteView'
         ArticleView: 'module/article/ArticleView'
+        CircleView: 'module/circle/CircleView'
 
 require ['backbone', 'handlebars', 'AppModel'], (Backbone, Handlebars, AppModel) ->
 
@@ -107,6 +108,10 @@ require ['backbone', 'handlebars', 'AppModel'], (Backbone, Handlebars, AppModel)
         setting: () ->
 
             @render('MainView', 'setting')
+
+        circle: () ->
+
+            @render('MainView', 'circle')
 
         write: () ->
 

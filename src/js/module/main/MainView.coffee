@@ -1,4 +1,4 @@
-define ['backbone', 'module/main/template', 'SettingView'], (Backbone, template, SettingView) ->
+define ['backbone', 'module/main/template', 'SettingView', 'CircleView'], (Backbone, template, SettingView, CircleView) ->
 
     MainView = Backbone.View.extend
 
@@ -37,10 +37,8 @@ define ['backbone', 'module/main/template', 'SettingView'], (Backbone, template,
                 avatar: $.localStorage('avatar')
             })
 
-            if data is 'setting'
-                @switchTo('setting')
-            else
-                @switchTo('main')
+            @switchTo(data)
+
             @$el
 
         switch: (event) ->
@@ -53,13 +51,21 @@ define ['backbone', 'module/main/template', 'SettingView'], (Backbone, template,
 
             that = @
 
+            name = 'main' if not name
+
             workspace.navigate(name, {trigger: false, replace: true})
+
+            $parent = that.$el.find('.main')
 
             if name is 'setting'
 
-                $parent = that.$el.find('.main')
                 settingView = new SettingView()
                 $parent.html settingView.render()
+
+            else if name is 'circle'
+
+                circleView = new CircleView()
+                $parent.html circleView.render()
 
             else
 

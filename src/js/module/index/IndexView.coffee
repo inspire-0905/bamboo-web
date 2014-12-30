@@ -81,6 +81,7 @@ define ['backbone', 'module/index/template'], (Backbone, template) ->
                 mail: mail,
                 pass: pass
             }).done (data) ->
+                $.localStorage('id', data.id)
                 $.localStorage('token', data.token)
                 $.localStorage('avatar', data.avatar)
                 $.localStorage('link', data.link)

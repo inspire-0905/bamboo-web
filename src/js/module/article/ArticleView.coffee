@@ -21,7 +21,7 @@ define ['backbone', 'module/article/template'], (Backbone, template) ->
                 articleId: @articleId
             }).done (data) ->
                 data.article.content = App.mdConvert.makeHtml(data.article.content)
-                data.like = $.localStorage('id') in data.article.like
+                (data.like = $.localStorage('id') in data.article.like) if data.article.like
                 that.$el.html template.page(data)
             .fail (data) ->
                 null
