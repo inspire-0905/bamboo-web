@@ -80,6 +80,9 @@ gulp.task('connect', function() {
                     '^(/article)?/css/(.*)$ /css/$2 [L]',
                     '^(/article)?/js/(.*)$ /js/$2 [L]',
                     '^(/article)?/img/(.*)$ /img/$2 [L]',
+                    '^(/edit)?/css/(.*)$ /css/$2 [L]',
+                    '^(/edit)?/js/(.*)$ /js/$2 [L]',
+                    '^(/edit)?/img/(.*)$ /img/$2 [L]',
                     '.* /index.html'
                 ])
             ]
