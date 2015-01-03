@@ -1,18 +1,16 @@
-define ['backbone', 'ace', 'module/write/template'], (Backbone, ace, template) ->
+define ['backbone', 'ace', 'module/edit/template'], (Backbone, ace, template) ->
 
-    WriteView = Backbone.View.extend
+    EditView = Backbone.View.extend
 
-        el: '#write'
+        el: '#edit'
 
         events:
 
-            'click .write': 'write'
+            'click .edit': 'edit'
             'click img': 'selectImg'
             'mouseover li.type': 'focusToolbarInput'
             'click .publish': 'publish'
             'click .edit-view li': 'modeSwitch'
-
-        articleId: ''
 
         initialize: () ->
 
@@ -20,11 +18,30 @@ define ['backbone', 'ace', 'module/write/template'], (Backbone, ace, template) -
 
             return $target[0].nodeName in ['INPUT', 'TEXTAREA'] or $target.hasClass(className) or $target.parents(".#{className}").length
 
-        render: () ->
+        render: (callback, articleId) ->
 
             that = @
 
-            @$el.html template.page()
+            if articleId is 'new'
+                that.articleId = ''
+                that.$el.html template.page()
+                that.loadEditor()
+                callback(that.$el)
+            else
+                that.articleId = articleId
+                App.article.get({
+                    articleId: that.articleId
+                }).done (data) ->
+                    data.article.content = App.mdConvert.makeHtml(data.article.content)
+                    that.$el.html template.page(data)
+                    that.loadEditor()
+                    callback(that.$el)
+                .always () ->
+                    NProgress.done()
+
+        loadEditor: () ->
+
+            that = @
 
             # init circle select
             @$el.find('.circle-select').selectize({
@@ -33,13 +50,7 @@ define ['backbone', 'ace', 'module/write/template'], (Backbone, ace, template) -
                 valueField: 'name',
                 labelField: 'name',
                 searchField: ['name', 'name'],
-                options: [
-                    {name: '电影'},
-                    {name: '音乐'},
-                    {name: '动漫'},
-                    {name: '摄影'},
-                    {name: '旅行'}
-                ],
+                options: App.circles,
                 render: {
                     item: (item, escape) ->
                         return '<div>' + item.name + '</div>'
@@ -78,8 +89,6 @@ define ['backbone', 'ace', 'module/write/template'], (Backbone, ace, template) -
                         that.$el.find('.content.visual').focusEnd()
 
             @initToolbar()
-
-            @$el
 
         toImg: (canvas) ->
 
@@ -233,8 +242,8 @@ define ['backbone', 'ace', 'module/write/template'], (Backbone, ace, template) -
                 @aceEditor.clearSelection()
                 $markdown.show()
 
-        write: () ->
+        edit: () ->
 
-        	workspace.navigate('write', {trigger: true})
+        	workspace.navigate('edit', {trigger: true})
 
-    return WriteView
+    return EditView

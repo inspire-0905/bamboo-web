@@ -45,7 +45,7 @@ define ['backbone', 'module/setting/template'], (Backbone, template) ->
             motto = $('#motto').val()
             @updateValue('motto', motto)
 
-        render: () ->
+        render: (callback) ->
 
             NProgress.start()
             @$el.html template.page({
@@ -56,7 +56,7 @@ define ['backbone', 'module/setting/template'], (Backbone, template) ->
                 avatar: $.localStorage('avatar')
             })
             NProgress.done()
-            @$el
+            callback(@$el)
 
         updateAvatar: (event) ->
 

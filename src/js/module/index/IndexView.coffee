@@ -10,7 +10,7 @@ define ['backbone', 'module/index/template'], (Backbone, template) ->
             'click .switch .btn': 'switch'
             'keypress .mail-input, .pass-input': 'inputPress'
 
-        render: (data) ->
+        render: (callback, data) ->
 
             that = @
             @$el.html template.page()
@@ -20,7 +20,8 @@ define ['backbone', 'module/index/template'], (Backbone, template) ->
             else if data is 'register'
                 @switch('register')
             _.defer () -> that.$el.find('.mail-input').focus()
-            return @$el
+
+            callback(that.$el)
 
         validateEmail: (email) ->
 

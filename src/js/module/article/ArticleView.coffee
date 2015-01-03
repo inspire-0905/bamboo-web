@@ -1,4 +1,4 @@
-define ['backbone', 'module/article/template'], (Backbone, template) ->
+define ['backbone', 'module/article/template', 'moment'], (Backbone, template, moment) ->
 
     ArticleView = Backbone.View.extend
 
@@ -11,7 +11,9 @@ define ['backbone', 'module/article/template'], (Backbone, template) ->
 
         initialize: () ->
 
-        render: (articleId) ->
+            moment.locale('zh-cn')
+
+        render: (callback, articleId) ->
 
             that = @
             NProgress.start()
@@ -21,14 +23,13 @@ define ['backbone', 'module/article/template'], (Backbone, template) ->
                 articleId: @articleId
             }).done (data) ->
                 data.article.content = App.mdConvert.makeHtml(data.article.content)
+                data.article.updated = moment(data.article.updated).fromNow()
+                data.article.count = $(data.article.content).text().length
                 (data.like = $.localStorage('id') in data.article.like) if data.article.like
                 that.$el.html template.page(data)
-            .fail (data) ->
-                null
+                callback(that.$el)
             .always () ->
                 NProgress.done()
-
-            @$el
 
         like: () ->
 

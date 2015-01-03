@@ -36,7 +36,7 @@
                 <span aria-hidden="true" class="icon icon-list"></span>
             </li>
         </ul>
-        <div class="write"><span aria-hidden="true" class="icon icon-book-open"></span>续写文章</div>
+        <div class="write"><span aria-hidden="true" class="icon icon-book-open"></span>撰写文章</div>
         <!-- <ul class="menu">
             <li class="menu-item">
                 <span aria-hidden="true" class="icon icon-bubbles"></span>
@@ -63,7 +63,7 @@
         </div>
         <div class="item">
             <i class="icon-clock"></i>
-            <span class="name">草稿</span>
+            <span class="name">私有</span>
             <span class="count">(12)</span>
         </div>
         <div class="item">
@@ -95,7 +95,7 @@
     <li class="article-item" data-id="{{id}}">
         {{#if thematic}}<div class="thematic" style="background-image: url({{thematic}});"></div>{{/if}}
         <ul class="tool">
-            <li class="view"><i class="icon-book-open"></i></li>
+            <li class="edit"><i class="icon-note"></i></li>
             <li class="remove"><i class="icon-trash"></i></li>
         </ul>
         <div class="card">
@@ -104,11 +104,11 @@
             <div class="footer">
                 <div class="author">
                     <div class="avatar"></div>
-                    {{author}} {{time}} 发表于旅行
+                    {{author}} {{time}} 发表于{{circle}}
                 </div>
                 <div class="detail">
-                    <span class="item"><span aria-hidden="true" class="icon icon-book-open"></span>234</span>
-                    <span class="item"><span aria-hidden="true" class="icon icon-heart"></span>18</span>
+                    <span class="item"><span aria-hidden="true" class="icon icon-book-open"></span>{{#if read}}{{read}}{{else}}0{{/if}}</span>
+                    <span class="item"><span aria-hidden="true" class="icon icon-heart"></span>{{like.length}}</span>
                 </div>
             </div>
         </div>

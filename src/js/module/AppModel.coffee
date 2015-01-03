@@ -18,6 +18,79 @@ define [], () ->
 
         baseURL: 'http://localhost:9090'
 
+        circles: [
+            {
+                name: "电影",
+                desc: "光影魅力，影评推荐",
+                icon: "film"
+            },
+            {
+                name: "音乐",
+                desc: "光影魅力，影评推荐",
+                icon: "music-tone-alt"
+            },
+            {
+                name: "二次元",
+                desc: "光影魅力，影评推荐",
+                icon: "ghost"
+            },
+            {
+                name: "摄影",
+                desc: "光影魅力，影评推荐",
+                icon: "camera"
+            },
+            {
+                name: "旅行",
+                desc: "光影魅力，影评推荐",
+                icon: "pointer"
+            },
+            {
+                name: "产品",
+                desc: "光影魅力，影评推荐",
+                icon: "rocket"
+            },
+            {
+                name: "想法",
+                desc: "光影魅力，影评推荐",
+                icon: "bulb"
+            },
+            {
+                name: "游戏",
+                desc: "光影魅力，影评推荐",
+                icon: "game-controller"
+            },
+            {
+                name: "绘画",
+                desc: "光影魅力，影评推荐",
+                icon: "pencil"
+            },
+            {
+                name: "程序",
+                desc: "光影魅力，影评推荐",
+                icon: "screen-desktop"
+            },
+            {
+                name: "阅读",
+                desc: "光影魅力，影评推荐",
+                icon: "eyeglasses"
+            },
+            {
+                name: "设计",
+                desc: "光影魅力，影评推荐",
+                icon: "layers"
+            },
+            {
+                name: "美食",
+                desc: "光影魅力，影评推荐",
+                icon: "cup"
+            },
+            {
+                name: "生活",
+                desc: "光影魅力，影评推荐",
+                icon: "handbag"
+            }
+        ]
+
         user:
 
             login: (data) ->
@@ -28,6 +101,9 @@ define [], () ->
 
             config: (data) ->
                 return AppModel.apiRequest('POST', '/user/config', ['key', 'value'], data)
+
+            info: () ->
+                return AppModel.apiRequest('POST', '/user/info', [])
 
         article:
 
@@ -49,6 +125,11 @@ define [], () ->
             favarite: (data) ->
                 return AppModel.apiRequest('POST', '/article/favarite', ['articleId', 'favarite'], data)
 
+        circle:
+
+            focus: (data) ->
+                return AppModel.apiRequest('POST', '/circle/focus', ['circle', 'focus'], data)
+
     , {
 
         apiRequest: (type, method, define, data) ->
@@ -68,7 +149,6 @@ define [], () ->
             returnDeferred = $.Deferred()
 
             deferred.done (data) ->
-                console.log(data)
                 if data.status
                     returnDeferred.resolve(data.result)
                 else
@@ -76,7 +156,7 @@ define [], () ->
                     returnDeferred.reject(data.result)
 
             .fail (data) ->
-                console.log(data)
+                App.notify('服务端或网络异常')
                 returnDeferred.reject('服务端或网络异常')
 
             .always () ->

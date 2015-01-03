@@ -9,10 +9,10 @@
     <div class="title">{{article.title}}</div>
     <div class="info">
         <i class="icon-book-open"></i>
-        <span class="item">3小时前</span>
-        <span class="item">发表于动画</span>
-        <span class="item">243字</span>
-        <span class="item">32阅读</span>
+        <span class="item">{{article.updated}}</span>
+        <span class="item">发表于{{article.circle}}</span>
+        <span class="item">{{article.count}}字</span>
+        <!-- <span class="item">32阅读</span> -->
     </div>
     <div class="content">{{{article.content}}}</div>
 </div>

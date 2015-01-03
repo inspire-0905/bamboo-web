@@ -18,16 +18,16 @@
         <div class="nick">纸小墨官方</div>
         <div class="motto">题图引用自Pixiv站新海诚似画风</div>
     </div> -->
-    <div class="title contenteditable" contenteditable tabindex="1"></div>
+    <div class="title contenteditable" contenteditable tabindex="1">{{article.title}}</div>
     <div class="info">
-        <input placeholder="选择圈子" class="circle-select" />
+        <input placeholder="选择圈子" class="circle-select" value="{{article.circle}}" />
     </div>
     <ul class="edit-view">
         <li class="visual active"><i class="icon-book-open"></i></li>
         <li class="markdown"><i class="icon-pencil"></i></li>
     </ul>
-    <div class="content visual contenteditable" contenteditable placeholder=""></div>
-    <div class="content markdown" placeholder="Markdown格式编辑">for test</div>
+    <div class="content visual contenteditable" contenteditable placeholder="">{{{article.content}}}</div>
+    <div class="content markdown" placeholder="Markdown格式编辑"></div>
 </div>
 <div class="toolbar">+
     <ul class="type-list">

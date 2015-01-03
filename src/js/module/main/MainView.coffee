@@ -8,6 +8,7 @@ define ['backbone', 'module/main/template', 'SettingView', 'CircleView'], (Backb
 
             'click .write': 'write'
             'click .article-item .remove': 'remove'
+            'click .article-item .edit': 'edit'
             'click .article-item': 'view'
             'click .tool .item': 'switch'
 
@@ -24,9 +25,11 @@ define ['backbone', 'module/main/template', 'SettingView', 'CircleView'], (Backb
             #     if currentTop > gapTop
             #         $logo.css('opacity', 0)
 
-        render: (data) ->
+        render: (callback, data) ->
 
             that = @
+
+            that.callback = callback
 
             that.$el.html template.page({
                 id: $.localStorage('id'),
@@ -38,8 +41,6 @@ define ['backbone', 'module/main/template', 'SettingView', 'CircleView'], (Backb
             })
 
             @switchTo(data)
-
-            @$el
 
         switch: (event) ->
 
@@ -60,12 +61,16 @@ define ['backbone', 'module/main/template', 'SettingView', 'CircleView'], (Backb
             if name is 'setting'
 
                 settingView = new SettingView()
-                $parent.html settingView.render()
+                settingView.render ($container) ->
+                    $parent.html($container)
+                    that.callback(that.$el)
 
             else if name is 'circle'
 
                 circleView = new CircleView()
-                $parent.html circleView.render()
+                circleView.render ($container) ->
+                    $parent.html($container)
+                    that.callback(that.$el)
 
             else
 
@@ -81,6 +86,7 @@ define ['backbone', 'module/main/template', 'SettingView', 'CircleView'], (Backb
                         articles: data
                     })
                     NProgress.done()
+                    that.callback(that.$el)
                 .fail (data) ->
                     null
 
@@ -89,7 +95,7 @@ define ['backbone', 'module/main/template', 'SettingView', 'CircleView'], (Backb
 
         write: () ->
 
-        	workspace.navigate('write', {trigger: true})
+        	workspace.navigate('edit/new', {trigger: true})
 
         remove: (event) ->
 
@@ -101,6 +107,14 @@ define ['backbone', 'module/main/template', 'SettingView', 'CircleView'], (Backb
                 $articleItem.remove()
             .fail (data) ->
                 null
+            return false
+
+        edit: (event) ->
+
+            $articleItem = $(event.currentTarget).parents('.article-item')
+            articleId = $articleItem.data('id')
+            workspace.navigate('edit/' + articleId, {trigger: true})
+            return false
 
         view: (event) ->
 

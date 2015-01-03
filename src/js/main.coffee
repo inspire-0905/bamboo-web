@@ -27,7 +27,7 @@ require.config
         AppModel:
             deps: ['backbone', 'markdown_converter']
 
-        WriteView:
+        EditView:
             deps: ['medium_editor', 'html2canvas', 'tomarkdown', 'selectize']
 
     paths:
@@ -44,16 +44,20 @@ require.config
         markdown_converter: 'vender/markdown'
         ace: 'vender/ace'
         selectize: 'vender/selectize/selectize.min'
+        moment: 'vender/moment-with-locales'
+        scroll: 'vender/perfect-scrollbar/perfect-scrollbar.min'
 
         AppModel: 'module/AppModel'
         IndexView: 'module/index/IndexView'
         MainView: 'module/main/MainView'
         SettingView: 'module/setting/SettingView'
-        WriteView: 'module/write/WriteView'
+        EditView: 'module/edit/EditView'
         ArticleView: 'module/article/ArticleView'
         CircleView: 'module/circle/CircleView'
 
-require ['backbone', 'handlebars', 'AppModel'], (Backbone, Handlebars, AppModel) ->
+require ['backbone', 'handlebars', 'AppModel', 'scroll'], (Backbone, Handlebars, AppModel) ->
+
+    # $('body').perfectScrollbar()
 
     Workspace = Backbone.Router.extend
 
@@ -65,7 +69,8 @@ require ['backbone', 'handlebars', 'AppModel'], (Backbone, Handlebars, AppModel)
             'register': 'register'
             'main': 'main'
             'setting': 'setting'
-            'write': 'write'
+            'circle': 'circle'
+            'edit/:id': 'edit'
             'article/:id': 'article'
 
         reset: () ->
@@ -85,9 +90,10 @@ require ['backbone', 'handlebars', 'AppModel'], (Backbone, Handlebars, AppModel)
                 view = that.cachedView[viewName]
 
                 $('.container').hide().empty()
-                $container = view.render(data)
-                $container.fadeIn()
-                NProgress.done()
+                view.render ($container) ->
+                    $container.fadeIn()
+                    NProgress.done()
+                , data
 
         index: () ->
 
@@ -113,9 +119,9 @@ require ['backbone', 'handlebars', 'AppModel'], (Backbone, Handlebars, AppModel)
 
             @render('MainView', 'circle')
 
-        write: () ->
+        edit: (articleId) ->
 
-            @render('WriteView')
+            @render('EditView', articleId)
 
         article: (articleId) ->
 
