@@ -22,6 +22,8 @@ define ['backbone', 'ace', 'module/edit/template'], (Backbone, ace, template) ->
 
             that = @
 
+            that.toolbar = null
+
             if articleId is 'new'
                 that.articleId = ''
                 that.$el.html template.page()
