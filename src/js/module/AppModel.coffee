@@ -105,13 +105,16 @@ define [], () ->
             info: () ->
                 return AppModel.apiRequest('POST', '/user/info', [])
 
+            timeline: () ->
+                return AppModel.apiRequest('POST', '/user/timeline', [])
+
         article:
 
             update: (data) ->
-                return AppModel.apiRequest('POST', '/article/update', ['articleId', 'title', 'content', 'circles'], data)
+                return AppModel.apiRequest('POST', '/article/update', ['articleId', 'title', 'content', 'circles', 'public'], data)
 
-            list: () ->
-                return AppModel.apiRequest('POST', '/article/list', [])
+            list: (data) ->
+                return AppModel.apiRequest('POST', '/article/list', ['filter'], data)
 
             remove: (data) ->
                 return AppModel.apiRequest('POST', '/article/remove', ['articleId'], data)

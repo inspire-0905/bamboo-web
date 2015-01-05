@@ -11,6 +11,7 @@ define ['backbone', 'ace', 'module/edit/template'], (Backbone, ace, template) ->
             'mouseover li.type': 'focusToolbarInput'
             'click .publish': 'publish'
             'click .edit-view li': 'modeSwitch'
+            'click .tool .type span': 'publicSwitch'
 
         initialize: () ->
 
@@ -26,6 +27,7 @@ define ['backbone', 'ace', 'module/edit/template'], (Backbone, ace, template) ->
 
             if articleId is 'new'
                 that.articleId = ''
+                that.public = false
                 that.$el.html template.page()
                 that.loadEditor()
                 callback(that.$el)
@@ -35,6 +37,7 @@ define ['backbone', 'ace', 'module/edit/template'], (Backbone, ace, template) ->
                     articleId: that.articleId
                 }).done (data) ->
                     data.article.content = App.mdConvert.makeHtml(data.article.content)
+                    that.public = data.article.public
                     that.$el.html template.page(data)
                     that.loadEditor()
                     callback(that.$el)
@@ -128,6 +131,7 @@ define ['backbone', 'ace', 'module/edit/template'], (Backbone, ace, template) ->
                 title: title,
                 content: content,
                 circles: circles,
+                public: that.public
             }).done (data) ->
                 that.articleId = data
                 workspace.navigate('main', {trigger: true})
@@ -243,6 +247,14 @@ define ['backbone', 'ace', 'module/edit/template'], (Backbone, ace, template) ->
                 @aceEditor.setValue(toMarkdown($visual.html()))
                 @aceEditor.clearSelection()
                 $markdown.show()
+
+        publicSwitch: (event) ->
+
+            $target = $(event.currentTarget)
+            $parent = $target.parents('.type')
+            $parent.find('span').removeClass('selected')
+            $target.addClass('selected')
+            @public = ($target.data('id') is 'public')
 
         edit: () ->
 

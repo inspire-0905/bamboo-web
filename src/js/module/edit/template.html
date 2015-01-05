@@ -8,8 +8,8 @@
         <i class="icon-book-open"></i><span>发布</span>
     </div>
     <div class="type">
-        <span class="selected">私有</span>
-        <span>公开</span>
+        <span class="private {{#unless article.public}}selected{{/unless}}" data-id="private">私有</span>
+        <span class="public {{#if article.public}}selected{{/if}}" data-id="public">公开</span>
     </div>
 </div>
 <div class="article">

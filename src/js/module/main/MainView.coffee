@@ -72,26 +72,40 @@ define ['backbone', 'module/main/template', 'SettingView', 'CircleView'], (Backb
                     $parent.html($container)
                     that.callback(that.$el)
 
+            else if name in ['private', 'public', 'favarite']
+
+                NProgress.start()
+                App.article.list({
+                    filter: name
+                }).done (data) ->
+                    that.renderList(data)
+                    NProgress.done()
+                that.callback(that.$el)
+
             else
 
                 NProgress.start()
-                App.article.list().done (data) ->
-                    data = _.map data, (item) ->
-                        $origin = $(App.mdConvert.makeHtml(item.content))
-                        firstImg = $origin.find('img')[0]
-                        item.content = $origin.text()
-                        item.thematic = firstImg.src if firstImg
-                        return item
-                    that.$el.find('.main').html template.articles({
-                        articles: data
-                    })
+                App.user.timeline().done (data) ->
+                    that.renderList(data)
                     NProgress.done()
-                    that.callback(that.$el)
-                .fail (data) ->
-                    null
+                that.callback(that.$el)
 
             that.$el.find('.tool .item').removeClass('selected')
             that.$el.find('.tool .item[data-id="' + name + '"]').addClass('selected')
+
+        renderList: (data) ->
+
+            that = @
+
+            data = _.map data, (item) ->
+                $origin = $(App.mdConvert.makeHtml(item.content))
+                firstImg = $origin.find('img')[0]
+                item.content = $origin.text()
+                item.thematic = firstImg.src if firstImg
+                return item
+            that.$el.find('.main').html template.articles({
+                articles: data
+            })
 
         write: () ->
 

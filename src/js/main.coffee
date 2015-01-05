@@ -68,6 +68,9 @@ require ['backbone', 'handlebars', 'AppModel', 'scroll'], (Backbone, Handlebars,
             'login': 'login'
             'register': 'register'
             'main': 'main'
+            'private': 'private'
+            'public': 'public'
+            'favarite': 'favarite'
             'setting': 'setting'
             'circle': 'circle'
             'edit/:id': 'edit'
@@ -110,6 +113,18 @@ require ['backbone', 'handlebars', 'AppModel', 'scroll'], (Backbone, Handlebars,
         main: () ->
 
             @render('MainView')
+
+        private: () ->
+
+            @render('MainView', 'private')
+
+        public: () ->
+
+            @render('MainView', 'public')
+
+        favarite: () ->
+
+            @render('MainView', 'favarite')
 
         setting: () ->
 
