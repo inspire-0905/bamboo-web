@@ -30,7 +30,7 @@ function program1(depth0,data) {
     + "\">\n        ";
   stack1 = helpers['if'].call(depth0, (depth0 && depth0.thematic), {hash:{},inverse:self.noop,fn:self.program(2, program2, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n        <ul class=\"tool\">\n            <li class=\"edit\"><i class=\"icon-note\"></i></li>\n            <li class=\"remove\"><i class=\"icon-trash\"></i></li>\n        </ul>\n        <div class=\"card\">\n            <div class=\"title\">";
+  buffer += "\n        <ul class=\"tool\">\n            <li class=\"edit\"><i class=\"icon-note\"></i></li>\n            <li class=\"remove\"><i class=\"icon-trash\"></i></li>\n        </ul>\n        <span class=\"update-value\">45%<span class=\"update\">更新</span></span>\n        <div class=\"card\">\n            <div class=\"title\">";
   if (helper = helpers.title) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.title); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
@@ -86,7 +86,15 @@ function program6(depth0,data) {
   buffer += "\n\n<ul class=\"article-list\">\n    ";
   stack1 = helpers.each.call(depth0, (depth0 && depth0.articles), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n</ul>\n";
+  buffer += "\n</ul>\n\n";
   return buffer;
+  }),
+"nocontent":Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  
+
+
+  return "\n\n<div class=\"nocontent\">\n    <span aria-hidden=\"true\" class=\"icon icon-drawer\"></span>\n    <div>尚无内容</div>\n    <div class=\"tip\">单击「撰写文章」添加</div>\n</div>\n";
   }),
 }});;

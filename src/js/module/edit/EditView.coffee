@@ -8,10 +8,13 @@ define ['backbone', 'ace', 'module/edit/template'], (Backbone, ace, template) ->
 
             'click .edit': 'edit'
             'click img': 'selectImg'
-            'mouseover li.type': 'focusToolbarInput'
+            'mouseover li.type,.image-upload': 'focusToolbarInput'
             'click .publish': 'publish'
             'click .edit-view li': 'modeSwitch'
             'click .tool .type span': 'publicSwitch'
+            'keypress .toolbar .image input': 'addImage'
+            'keypress .toolbar .music input': 'addMusic'
+            'keypress .toolbar .vedio input': 'addVideo'
 
         initialize: () ->
 
@@ -24,6 +27,8 @@ define ['backbone', 'ace', 'module/edit/template'], (Backbone, ace, template) ->
             that = @
 
             that.toolbar = null
+
+            that.public = false
 
             if articleId is 'new'
                 that.articleId = ''
@@ -143,8 +148,11 @@ define ['backbone', 'ace', 'module/edit/template'], (Backbone, ace, template) ->
 
         focusToolbarInput: (event) ->
 
-            $typeBtn = $(event.target)
-            $typeBtn.find('input.link').focus()
+            $target = $(event.currentTarget)
+            $typeBtn = $target.parent('li.type').find('input.link')
+            if not $typeBtn.length
+                $typeBtn = $target.find('input.link')
+            $typeBtn.focus()
 
         initToolbar: () ->
 
@@ -255,6 +263,70 @@ define ['backbone', 'ace', 'module/edit/template'], (Backbone, ace, template) ->
             $parent.find('span').removeClass('selected')
             $target.addClass('selected')
             @public = ($target.data('id') is 'public')
+
+        addImage: (event) ->
+
+            that = @
+
+            if event.keyCode == 13
+
+                $input = $(event.currentTarget)
+                url = $input.val()
+                img = new Image()
+                img.onload = () ->
+                    that.$el.find('.content.visual').focusEnd()
+                    $dom = '<img class="preview" src="' + @src + '"/>'
+                    document.execCommand('insertHTML', true, $dom)
+                    $input.val('')
+                img.onerror = () ->
+                    App.notify('图片地址解析错误')
+                img.src = url
+
+        addMusic: (event) ->
+
+            if event.keyCode == 13
+
+                $input = $(event.currentTarget)
+                url = $input.val()
+
+                if url.match(/music.163.com/)
+
+                    idAry = url.match(/id=((\d)+)/)
+                    id = idAry[1] or ''
+
+                if id
+                    @$el.find('.content.visual').focusEnd()
+                    $dom = '<embed src="http://music.163.com/style/swf/widget.swf?sid=' + id +
+                        '&type=2&auto=0&width=320&height=66" width="340" height="86"  allowNetworking="all"></embed>'
+                    document.execCommand('insertHTML', true, $dom)
+                    $input.val('')
+                else
+                    App.notify('音乐地址解析错误')
+
+        addVideo: (event) ->
+
+            if event.keyCode == 13
+
+                $input = $(event.currentTarget)
+                url = $input.val()
+
+                if url.match(/youtube/)
+                    idAry = url.match(/v=([A-Za-z0-9]+)/)
+                    id = if idAry then idAry[1] else ''
+                    $dom = '<iframe width="560" height="315" src="//www.youtube.com/embed/' + id +
+                        '" frameborder="0" allowfullscreen></iframe>'
+                else if url.match(/vimeo/)
+                    idAry = url.match(/\/((\d)+)/)
+                    id = if idAry then idAry[1] else ''
+                    $dom = '<iframe src="//player.vimeo.com/video/' + id +
+                        '" width="500" height="208" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>'
+
+                if id
+                    @$el.find('.content.visual').focusEnd()
+                    document.execCommand('insertHTML', true, $dom)
+                    $input.val('')
+                else
+                    App.notify('视频地址解析错误')
 
         edit: () ->
 

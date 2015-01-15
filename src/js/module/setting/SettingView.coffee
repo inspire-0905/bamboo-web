@@ -10,6 +10,7 @@ define ['backbone', 'module/setting/template'], (Backbone, template) ->
             'click #mail_confirm': 'updateMail'
             'click #link_confirm': 'updateLink'
             'click #pass_confirm': 'updatePass'
+            'click #name_confirm': 'updateName'
             'change #nick': 'updateNick'
             'change #motto': 'updateMotto'
             'change #avatar': 'updateAvatar'
@@ -49,6 +50,7 @@ define ['backbone', 'module/setting/template'], (Backbone, template) ->
 
             NProgress.start()
             @$el.html template.page({
+                name: $.localStorage('name'),
                 mail: $.localStorage('mail'),
                 nick: $.localStorage('nick'),
                 motto: $.localStorage('motto'),
@@ -71,5 +73,10 @@ define ['backbone', 'module/setting/template'], (Backbone, template) ->
             reader.onload = (event) ->
                 that.$el.find('img.preview')[0].src = @result
                 that.updateValue('avatar', @result)
+
+        updateName: (event) ->
+
+            name = $('#name').val()
+            @updateValue('name', name)
 
     return SettingView

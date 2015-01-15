@@ -1,4 +1,4 @@
-define ['backbone', 'module/main/template', 'SettingView', 'CircleView'], (Backbone, template, SettingView, CircleView) ->
+define ['backbone', 'module/main/template', 'SettingView', 'CircleView', 'diff'], (Backbone, template, SettingView, CircleView, Diff) ->
 
     MainView = Backbone.View.extend
 
@@ -14,6 +14,8 @@ define ['backbone', 'module/main/template', 'SettingView', 'CircleView'], (Backb
 
         initialize: () ->
 
+            @diff = new diff_match_patch()
+
             # that = @
             # $(window).scroll () ->
             #
@@ -25,6 +27,11 @@ define ['backbone', 'module/main/template', 'SettingView', 'CircleView'], (Backb
             #     if currentTop > gapTop
             #         $logo.css('opacity', 0)
 
+        getChangeRate: (content1, content2) ->
+
+            diffData = @diff.diff_main(content1, content2)
+            return (@diff.diff_levenshtein(diffData) / content1.length) * 100
+
         render: (callback, data) ->
 
             that = @
@@ -33,6 +40,7 @@ define ['backbone', 'module/main/template', 'SettingView', 'CircleView'], (Backb
 
             that.$el.html template.page({
                 id: $.localStorage('id'),
+                name: $.localStorage('name'),
                 mail: $.localStorage('mail'),
                 nick: $.localStorage('nick'),
                 motto: $.localStorage('motto'),
@@ -100,12 +108,19 @@ define ['backbone', 'module/main/template', 'SettingView', 'CircleView'], (Backb
             data = _.map data, (item) ->
                 $origin = $(App.mdConvert.makeHtml(item.content))
                 firstImg = $origin.find('img')[0]
-                item.content = $origin.text()
+                content = $origin.text()
+                if content.length > 90
+                    item.content = content.slice(0, 90) + '...'
+                else
+                    item.content = content
                 item.thematic = firstImg.src if firstImg
                 return item
-            that.$el.find('.main').html template.articles({
-                articles: data
-            })
+            if data.length
+                that.$el.find('.main').html template.articles({
+                    articles: data
+                })
+            else
+                that.$el.find('.main').html template.nocontent()
 
         write: () ->
 

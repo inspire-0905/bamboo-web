@@ -46,6 +46,7 @@ require.config
         selectize: 'vender/selectize/selectize.min'
         moment: 'vender/moment-with-locales'
         scroll: 'vender/perfect-scrollbar/perfect-scrollbar.min'
+        diff: 'vender/diff_match_patch'
 
         AppModel: 'module/AppModel'
         IndexView: 'module/index/IndexView'

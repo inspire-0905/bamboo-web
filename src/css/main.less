@@ -120,6 +120,25 @@
     .right {
         .main {
             overflow: auto;
+            .nocontent {
+                padding-top: 40px;
+                text-align: center;
+                margin: 0 auto;
+                color: #ccc;
+                font-size: 18px;
+                .icon {
+                    color: #ddd;
+                    display: block;
+                    font-size: 32px;
+                    margin-bottom: 7px;
+                }
+                div {
+                    &.tip {
+                        margin-top: 30px;
+                        font-style: italic;
+                    }
+                }
+            }
         }
         .tool {
             font-size: 18px;
@@ -270,6 +289,20 @@
                         }
                     }
                 }
+                .update-value {
+                    position: absolute;
+                    margin-top: 76px;
+                    margin-bottom: 10px;
+                    opacity: 1;
+                    margin-left: -110px;
+                    color: #ccc;
+                    font-style: italic;
+                    font-size: 24px;
+                    .update {
+                        font-size: 14px;
+                        margin-left: 5px;
+                    }
+                }
                 // .checkbox {
                 //     font-size: 16px;
                 //     color: #000;
@@ -298,7 +331,10 @@
                 // }
                 &:hover {
                     .tool {
-                        opacity: 1 !important;
+                        opacity: 1;
+                    }
+                    .update-value {
+                        opacity: 0;
                     }
                 }
                 &:last-child {
