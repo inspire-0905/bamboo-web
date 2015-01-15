@@ -16,7 +16,7 @@ define [], () ->
                 $notify.removeClass('show')
             , 2000
 
-        baseURL: "#{location.hostname}:9090"
+        baseURL: "http://#{location.hostname}:9090"
 
         circles: [
             {
