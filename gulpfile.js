@@ -1,13 +1,13 @@
 var path = require('path'),
-gulp = require('gulp'),
-gutil = require('gulp-util'),
-connect = require('gulp-connect'),
-clean = require('gulp-clean'),
-coffee = require('gulp-coffee'),
-less = require('gulp-less'),
-defineModule = require('gulp-define-module'),
-handlebars = require('handlebars'),
-modRewrite = require('connect-modrewrite');
+    gulp = require('gulp'),
+    gutil = require('gulp-util'),
+    connect = require('gulp-connect'),
+    clean = require('gulp-clean'),
+    coffee = require('gulp-coffee'),
+    less = require('gulp-less'),
+    defineModule = require('gulp-define-module'),
+    handlebars = require('handlebars'),
+    modRewrite = require('connect-modrewrite');
 
 var compileFunc = function(file, method, outpath) {
     if (method === 'template') {
@@ -107,8 +107,7 @@ gulp.task('connect', function() {
                 '^(/edit)?/js/(.*)$ /js/$2 [L]',
                 '^(/edit)?/img/(.*)$ /img/$2 [L]',
                 '.* /index.html'
-                ])]
-            }
+            ])]}
         });
     });
 
@@ -122,5 +121,4 @@ gulp.task('watch', function() {
 });
 
 gulp.task('default', ['compile', 'connect', 'watch']);
-gulp.task('develop', ['compile']);
 gulp.task('release', ['cleanRelease', 'publish']);

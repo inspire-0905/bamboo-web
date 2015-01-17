@@ -145,4 +145,4 @@ require ['backbone', 'handlebars', 'AppModel', 'scroll'], (Backbone, Handlebars,
 
     window.workspace = new Workspace()
     window.App = new AppModel()
-    Backbone.history.start({pushState: true})
+    Backbone.history.start()
